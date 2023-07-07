@@ -19,5 +19,5 @@
 - Wireframe.md
 
 ## システム構成図
-- system_configuration_diagram.md
+- System_configuration_diagram.md
   
