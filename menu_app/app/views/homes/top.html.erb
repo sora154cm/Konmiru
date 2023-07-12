@@ -1,0 +1,28 @@
+<!-- フラッシュメッセージ -->
+<% if flash[:notice] %>
+  <div class="user-registration message">
+    <%= flash[:notice] %>
+  </div>
+<% end %>
+
+
+<h1>Homes#top</h1>
+<p>Find me in app/views/homes/top.html.erb</p>
+
+<p>トップページ</p>
+<p>食材でレシピを検索等</p>
+
+<h2>全ユーザーのログインIDとパスワード</h2>
+<% @users.each do |user| %>
+  <div>
+    <p>ログインID: <%= user.login_key %></p>
+    <p>パスワード: <%= user.password_digest %></p>
+  </div>
+<% end %>
+
+
+
+
+
+
+

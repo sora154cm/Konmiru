@@ -1,0 +1,6 @@
+ja:
+  activerecord:
+    attributes:
+      user:
+        login_key: "ログインID"
+        password: "パスワード"

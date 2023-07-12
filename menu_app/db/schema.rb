@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_07_10_235024) do
+ActiveRecord::Schema[7.0].define(version: 2023_07_11_135930) do
   create_table "recipes", force: :cascade do |t|
     t.integer "user_id"
     t.string "recipe_name"
@@ -23,11 +23,11 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_10_235024) do
 
   create_table "users", force: :cascade do |t|
     t.string "login_key"
-    t.string "password_hash"
     t.string "user_name"
     t.string "profile_image"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "password_digest"
   end
 
   add_foreign_key "recipes", "users"
