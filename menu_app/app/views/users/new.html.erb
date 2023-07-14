@@ -7,7 +7,7 @@
   <% end %>
 <% end %>
 
-<h1>新規登録</h1>
+<h1>新規登録ページ</h1>
 
 <%= form_with(url: users_path) do |f| %>
   <div>
@@ -25,3 +25,5 @@
   </div>
   
 <% end %>
+
+<%= link_to "新規登録済の場合はこちらから", login_path %>

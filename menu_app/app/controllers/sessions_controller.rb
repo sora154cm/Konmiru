@@ -1,23 +1,30 @@
 class SessionsController < ApplicationController
+
   def new
     
   end
 
   def login
-    user = User.find_by(login_key: params[:session][:login_key])
-
-    if user && user.authenticate(params[:session][:password])
+    user = User.find_by(login_key: params[:login_key])
+    # 一致するユーザーをデータベースから見つけられたら
+    # 引数として与えられたパスワードがユーザーのパスワードと一致するかどうかを確認
+    if user && user.authenticate(params[:password])
+      # sessionを通じて、user_idキーにログインしたユーザーのIDを保存する
       session[:user_id] = user.id
-      redirect_to user
+      flash[:notice] = "ログインができました!"
+      redirect_to root_path
     else
-      flash.now[:danger] = 'Invalid login key/password combination'
-      render 'new'
+      flash[:danger] = 'ログインIDまたはパスワードが間違っています'
+      # 本当はレンダリングを使いたいが、Turboはリダイレクトを期待しているためリダイレクト
+      redirect_to login_path
     end
   end
-
+  
   def logout
+    # sessionオブジェクトから:user_id（ログインしているユーザーのID）を削除
+    # ログインユーザーのセッションを解除
     session.delete(:user_id)
-    redirect_to root_url
+    flash[:notice] = "ログアウトしました！"
+    redirect_to login_path
   end
-
 end
