@@ -31,6 +31,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
   function createNewIngredient(formCount) {
     const newForm = document.createElement('input');
     newForm.type = 'text';
+    newForm.name = 'ingredients[]';  // ここに追加
 
     newForm.classList.add('ingredient-input');  // 新しいinputにclassを追加
 

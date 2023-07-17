@@ -22,6 +22,9 @@
     <button class="add-ingredient-button">食材を追加する</button>
   </div>
 
+  <!-- 調理工程を登録 -->
+  <%= form.text_area :recipe_process, placeholder: '調理工程を入力してください' %>
+
   <%= form.submit '登録する' %>
 
 <% end %>
