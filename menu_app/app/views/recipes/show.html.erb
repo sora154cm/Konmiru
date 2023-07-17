@@ -1,0 +1,8 @@
+<h1>レシピ詳細ページ</h1>
+
+  <!-- 、@recipe.recipe_imageが存在すればそれを表示し、存在しなければデフォルトの画像を表示 -->
+  <% if @recipe.recipe_image.present? %>
+    <%= image_tag @recipe.recipe_image, size: '300x200' %>
+  <% else %>
+    <%= image_tag "no_image.png", size: '300x200' %>
+  <% end %>
