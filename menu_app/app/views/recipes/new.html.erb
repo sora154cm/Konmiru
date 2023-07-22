@@ -2,29 +2,37 @@
 
 <div><%= link_to "トップページ", root_path %></div>
 
-<%= form_with model: [@current_user, @recipe], html: { multipart: true } do |form| %>
+
+<%= form_with(url: user_recipes_path, method: :post, local: true, html: { multipart: true }) do |f| %>
+  <!-- ユーザーIDを取得 -->
+  <%= f.hidden_field :user_id, value: @current_user.id, id: "user_id" %>
+
   <!-- @recipe.recipe_imageが存在すればそれを表示し、存在しなければデフォルトの画像を表示 -->
   <% if @recipe.recipe_image.present? %>
     <%= image_tag @recipe.recipe_image, size: '300x200', class: 'image' %>
   <% else %>
     <%= image_tag "recipe_images/initial_recipe.png", size: '300x200', class: 'image' %>
   <% end %>
-  <!-- 画像をクリックすると画像選択 -->
-  <%= form.file_field :recipe_image, id: 'recipe_image' %>
+  <!-- 上記の画像をクリックすると画像選択(CSSで普段は非表示) -->
+  <%= f.file_field :recipe_image, id: 'recipe_image' %>
   <!-- 仮メッセージ -->
   <p>画像をクリックして写真をアップロード!</p>
 
   <!-- レシピ名を登録 -->
-  <%= form.text_field :recipe_name, placeholder: '料理名を入力してください' %>
+  <%= f.text_field :recipe_name, placeholder: "料理名を入力してください" %>
   
   <!-- 食材を登録 -->
   <div class="ingredient-addition">
-    <button class="add-ingredient-button">食材を追加する</button>
+    <!-- POST通信が行われないようにtype="button"を明示 -->
+    <button type="button" class="add-ingredient-button">食材を追加する</button>
   </div>
 
   <!-- 調理工程を登録 -->
-  <%= form.text_area :recipe_process, placeholder: '調理工程を入力してください' %>
+  <%= f.text_area :recipe_process, placeholder: "調理工程を入力してください" %>
 
-  <%= form.submit '登録する' %>
-
+  <div>
+    <!-- Submit button -->
+    <%= f.submit "レシピを登録する", id: 'submit-button' %>
+  </div>
 <% end %>
+

@@ -40,3 +40,8 @@
 .delete-ingredient-button {
   margin-left: 10px;
 }
+
+/* レシピ登録ボタン */
+.recipe-registration {
+  margin-top:10px;
+}
