@@ -55,6 +55,8 @@ document.addEventListener('DOMContentLoaded', (event) => {
     // フォームを作成
     const newForm = document.createElement('input');
     newForm.type = 'text';
+    // s食材のname属性の追加
+    newForm.name = 'ingredients[]';  
     // ingredient-inputクラスを付与
     newForm.classList.add('ingredient-input'); 
 
@@ -87,11 +89,25 @@ document.addEventListener('DOMContentLoaded', (event) => {
     const formCount = document.querySelectorAll('.ingredient-input').length + 1;
     createNewIngredient(formCount);
   });
+
+  // Submitボタンをクリックしたときの動作を定義
+  document.getElementById('submit-button').addEventListener('click', (event) => {
+    // フォーム送信のデフォルトの動作を一旦停止
+    event.preventDefault();
+
+    // すべての食材inputを取得
+    let ingredientInputs = document.querySelectorAll('.ingredient-input');
+
+    // 空の食材inputがないことを確認
+    for (let i = 0; i < ingredientInputs.length; i++) {
+      // 空の食材inputがあればアラートを出して処理を終了
+      if (ingredientInputs[i].value == '') {
+        alert('食材が空欄です！');
+        return;
+      }
+    }
+    // フォーム送信のデフォルトの動作を再開
+    event.target.form.submit();
+  });
 });
 // ~食材追加のフォーム追加や削除に伴う処理終了~
-
-
-
-
-
-

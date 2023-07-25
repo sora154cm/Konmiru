@@ -3,7 +3,7 @@
 <div><%= link_to "トップページ", root_path %></div>
 
 
-<%= form_with(url: user_recipes_path, method: :post, local: true, html: { multipart: true }) do |f| %>
+<%= form_with(model: [@user, @recipe], local: true, html: { multipart: true }) do |f| %>
   <!-- ユーザーIDを取得 -->
   <%= f.hidden_field :user_id, value: @current_user.id, id: "user_id" %>
 
@@ -36,3 +36,5 @@
   </div>
 <% end %>
 
+
+  

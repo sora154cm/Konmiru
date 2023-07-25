@@ -1,5 +1,7 @@
 <h1>レシピ詳細ページ</h1>
 
+<div><%= link_to "トップページ", root_path %></div>
+
 <!-- フラッシュメッセージ -->
 <% if flash[:notice] %>
   <div class="user-registration message">
@@ -7,9 +9,23 @@
   </div>
 <% end %>
 
-  <!-- 、@recipe.recipe_imageが存在すればそれを表示し、存在しなければデフォルトの画像を表示 -->
-  <% if @recipe.recipe_image.present? %>
-    <%= image_tag @recipe.recipe_image, size: '300x200' %>
-  <% else %>
-    <%= image_tag "no_image.png", size: '300x200' %>
-  <% end %>
+<!-- 投稿したレシピ画像が存在すればそれを表示し、存在しなければデフォルトの画像を表示 -->
+<% if @recipe.recipe_image.attached? %>
+  <%= image_tag @recipe.recipe_image, size: '300x200' %>
+<% else %>
+  <%= image_tag "no_image.png", size: '300x200' %>
+<% end %>
+
+<!-- レシピの名前 -->
+<p><strong>レシピ名:</strong> <%= @recipe.recipe_name %></p>
+
+<!-- レシピの調理過程 -->
+<p><strong>調理過程:</strong></p>
+<%= @recipe.recipe_process %>
+
+<!-- 食材リスト -->
+<p><strong>食材リスト</strong></p>
+<% @recipe.ingredients.each do |ingredient| %>
+  <%= ingredient.ingredient_name %><br>
+<% end %>
+

@@ -12,16 +12,15 @@ Rails.application.routes.draw do
 
   # ユーザ関連のルーティング
   resources :users, only: [:show, :edit, :update] do
-    # 特定のユーザー(id)に対するマイページをルーティング
     member do
+      # 特定のユーザー(id)に対するマイページをルーティング
       get :my_page
+      # 特定のレシピ(id)に対するレシピ結果をルーティング
+      get :result
     end
     # レシピ関連のルーティング(ユーザー関連の中にネスト)
     resources :recipes, only: [:index, :show, :new, :create, :edit, :update] do
-      # 特定のレシピ(id)に対するレシピ結果をルーティング
-      member do
-        get :result
-      end
+      
     end
 
   end
