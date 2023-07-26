@@ -21,4 +21,18 @@ class UsersController < ApplicationController
       redirect_to signup_path
     end
   end
+
+  def result
+    @ingredient_name = params[:ingredient_name]
+    @ingredient = Ingredient.find_by(ingredient_name: @ingredient_name)
+      
+    if @ingredient
+      # N+1問題を解消するため、includesメソッドを使用
+      @recipes = @ingredient.recipes.includes(:user, :recipe_image_attachment)
+    else
+      @recipes = []
+      flash[:alert] = "該当する食材が見つかりませんでした"
+    end
+  end
+  
 end
