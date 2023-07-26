@@ -36,6 +36,25 @@ class RecipesController < ApplicationController
     @recipe = Recipe.find(params[:id])
   end
 
+  def edit
+    @user = User.find(params[:user_id])
+    @recipe = Recipe.find(params[:id])
+  end
+
+  def update
+    @recipe = Recipe.find(params[:id])
+    if @recipe.update(recipe_params)
+      @recipe.ingredients.each_with_index do |ingredient, index|
+        ingredient.update(ingredient_name: params[:ingredients][index])
+      end
+      flash[:notice] = "レシピ編集が完了しました!"
+      redirect_to user_recipe_path(@recipe.user, @recipe)
+    else
+      render :edit
+    end
+  end
+  
+
   private
 
   def recipe_params
