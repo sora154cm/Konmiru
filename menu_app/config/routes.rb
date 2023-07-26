@@ -9,6 +9,8 @@ Rails.application.routes.draw do
   get '/login', to: 'sessions#new'
   post '/login', to: 'sessions#login'
   delete '/logout', to: 'sessions#logout'
+  # ユーザーとレシピページ一覧のルーティング
+  get 'users/all', 'users#index'
 
   # ユーザ関連のルーティング
   resources :users, only: [:show, :edit, :update] do

@@ -4,6 +4,12 @@ class UsersController < ApplicationController
     @user = User.new
   end
 
+  def all
+    @user = User.all
+    @all_recipe = Recipe.all
+  end
+  
+
   def show
     @user = User.find(params[:id])
   end
@@ -34,5 +40,5 @@ class UsersController < ApplicationController
       flash[:alert] = "該当する食材が見つかりませんでした"
     end
   end
-  
+
 end
