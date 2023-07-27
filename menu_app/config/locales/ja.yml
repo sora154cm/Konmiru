@@ -4,3 +4,5 @@ ja:
       user:
         login_key: "ログインID"
         password: "パスワード"
+      recipe:
+        recipe_name: "料理名"

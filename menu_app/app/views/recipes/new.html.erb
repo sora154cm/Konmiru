@@ -1,3 +1,12 @@
+<!-- フラッシュメッセージ -->
+<% if flash[:alert] %>
+  <% flash[:alert].each do |message| %>
+    <div class="user-alert message">
+      <%= message %>
+    </div>
+  <% end %>
+<% end %>
+
 <h1>レシピ登録ページ</h1>
 
 <div><%= link_to "トップページ", root_path %></div>

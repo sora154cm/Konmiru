@@ -1,6 +1,14 @@
 class UsersController < ApplicationController
   before_action :authenticate_user, except: [:create, :new]
 
+  # ログインしていなかったらログイン画面にリダイレクトする
+  def authenticate_user
+    if @current_user == nil
+      flash[:notice] = "ログインが必要です"
+      redirect_to(login_path)
+    end
+  end
+
   def new
     @user = User.new
   end

@@ -27,7 +27,10 @@ class RecipesController < ApplicationController
       flash[:notice] = "レシピ登録ができました!"
       redirect_to user_recipe_path(@recipe.user, @recipe)
     else
-      render :new
+      # Turboはリダイレクトを期待しているため
+      # リダイレクト後にエラーメッセージを表示するためにフラッシュメッセージの方法をとる必要がある
+      flash[:alert] = @recipe.errors.full_messages
+      redirect_to new_user_recipe_path
     end
   end
 
