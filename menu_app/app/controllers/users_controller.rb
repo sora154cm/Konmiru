@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  before_action :authenticate_user, except: [:create, :new]
 
   def new
     @user = User.new
@@ -8,7 +9,6 @@ class UsersController < ApplicationController
     @user = User.all
     @all_recipe = Recipe.all
   end
-  
 
   def show
     @user = User.find(params[:id])
@@ -18,7 +18,9 @@ class UsersController < ApplicationController
     @user = User.new(login_key: params[:login_key], password: params[:password])
 
     if @user.save
-      flash[:notice] = "ユーザー登録が完了しました!あなたのIDは #{@user.login_key} です。"
+      # ユーザー登録後、そのユーザーをログイン状態にする
+      session[:user_id] = @user.id  
+      flash[:notice] = "ユーザー登録が完了しました! あなたのIDは #{@user.login_key} です。"
       redirect_to root_path
     else
       # Turboはリダイレクトを期待しているため
