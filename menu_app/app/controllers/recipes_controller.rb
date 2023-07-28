@@ -11,7 +11,6 @@ class RecipesController < ApplicationController
   
   def new
     @user = User.find(params[:user_id])
-    @recipe = Recipe.new
     @recipe = @user.recipes.build
   end
 
@@ -56,7 +55,6 @@ class RecipesController < ApplicationController
       render :edit
     end
   end
-  
 
   private
 
