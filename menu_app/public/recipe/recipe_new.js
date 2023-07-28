@@ -24,7 +24,10 @@ function createNewIngredient(formCount) {
   // 作成した(div)の中に子要素として作成したフォーム、ラベル、削除ボタンを入れる
   newFormContainer.appendChild(newLabel);
   newFormContainer.appendChild(newForm);
-  newFormContainer.appendChild(deleteButton);
+  // 最初のフォームでなければ削除ボタンも追加
+  if (formCount !== 1) {
+    newFormContainer.appendChild(deleteButton);
+  }
   // さらにingredient-additionクラスの中に子要素として入れる
   document.querySelector('.ingredient-addition').appendChild(newFormContainer);
 }
@@ -34,6 +37,7 @@ document.querySelector('.add-ingredient-button').addEventListener('click', () =>
   const formCount = document.querySelectorAll('.ingredient-input').length + 1;
   createNewIngredient(formCount);
 });
+
 // Submitボタンをクリックしたときの動作を定義
 document.getElementById('submit-button').addEventListener('click', (event) => {
   // フォーム送信のデフォルトの動作を一旦停止
@@ -44,11 +48,13 @@ document.getElementById('submit-button').addEventListener('click', (event) => {
   for (let i = 0; i < ingredientInputs.length; i++) {
     // 空の食材inputがあればアラートを出して処理を終了
     if (ingredientInputs[i].value == '') {
-      alert('食材が空欄です！');
+      alert('食材を一つ以上入力してください');
       return;
     }
   }
   // フォーム送信のデフォルトの動作を再開
   event.target.form.submit();
 });
+// ページが読み込まれたときに最初のフォームを表示
+createNewIngredient(1);
 // ~食材追加のフォーム追加や削除に伴う処理終了~
