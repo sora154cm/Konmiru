@@ -5,10 +5,6 @@
 <!-- レシピ詳細ページのリンク -->
 <div><%= link_to "レシピに戻る", user_recipe_path(@recipe.user, @recipe) %></div>
 
-<h1>レシピ編集ページ</h1>
-
-<div><%= link_to "トップページ", root_path %></div>
-
 <%= form_with(model: [@user, @recipe], local: true, html: { multipart: true }, method: :patch) do |f| %>
   <!-- ユーザーIDを取得 -->
   <%= f.hidden_field :user_id, value: @current_user.id, id: "user_id" %>
@@ -37,10 +33,12 @@
   <div class="ingredient-list">
     <% @recipe.ingredients.each_with_index do |ingredient, index| %>
       <div id="ingredient_<%= ingredient.id %>">
-        <label>食材(<%= index + 1 %>):</label>
-        <%= text_field_tag 'ingredients[]', ingredient.ingredient_name, class: 'ingredient-input' %>
+        <label>食材(<%= index + 1 %>): </label>
+        <%= text_field_tag 'ingredients[]', ingredient.ingredient_name, class: 'ingredient-input', id: "ingredient_input_#{ingredient.id}"  %>
         <!-- 削除ボタンを追加 -->
-        <button type="button" class="delete-ingredient-button" data-ingredient-id="<%= ingredient.id %>">-</button>
+        <% unless index.zero? %>
+          <button type="button" class="delete-ingredient-button" data-ingredient-id="<%= ingredient.id %>" onclick="deleteIngredient(<%=  ingredient.id %>)">-</button>
+        <% end %>
       </div>
     <% end %>
   </div>
@@ -54,4 +52,5 @@
   </div>
 <% end %>
 
-
+<!-- JavaScriptファイルの読み込み -->
+<script src="/recipe/recipe_edit.js"></script>

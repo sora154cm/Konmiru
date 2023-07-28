@@ -47,7 +47,12 @@ class RecipesController < ApplicationController
     @recipe = Recipe.find(params[:id])
     if @recipe.update(recipe_params)
       @recipe.ingredients.each_with_index do |ingredient, index|
-        ingredient.update(ingredient_name: params[:ingredients][index])
+        if params[:ingredients][index].blank?
+          # 先に関連付けられている RecipeIngredient を削除
+          @recipe.recipe_ingredients.where(ingredient_id: ingredient.id).destroy_all
+        else
+          ingredient.update(ingredient_name: params[:ingredients][index])
+        end
       end
       flash[:notice] = "レシピ編集が完了しました!"
       redirect_to user_recipe_path(@recipe.user, @recipe)
@@ -55,6 +60,8 @@ class RecipesController < ApplicationController
       render :edit
     end
   end
+
+  
 
   private
 
