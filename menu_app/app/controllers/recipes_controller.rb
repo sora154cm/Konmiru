@@ -1,4 +1,7 @@
 class RecipesController < ApplicationController
+
+  protect_from_forgery except: [:create_ingredient, :delete_ingredient]
+  
   before_action :authenticate_user
 
   # ログインしていなかったらログイン画面にリダイレクトする
@@ -61,7 +64,22 @@ class RecipesController < ApplicationController
     end
   end
 
-  
+  def create_ingredient
+    @user = User.find(params[:user_id])
+    @recipe = @user.recipes.find(params[:id])
+    @ingredient = Ingredient.create(ingredient_name: params[:ingredient_name])
+    RecipeIngredient.create(recipe: @recipe, ingredient: @ingredient)
+    render json: { id: @ingredient.id }
+  end
+
+  def delete_ingredient
+    @user = User.find(params[:user_id])
+    @recipe = @user.recipes.find(params[:id])
+    @ingredient = Ingredient.find(params[:ingredient_id])
+    RecipeIngredient.where(recipe: @recipe, ingredient: @ingredient).destroy_all
+    @ingredient.destroy if @ingredient.recipes.count == 0
+    head :no_content
+  end
 
   private
 

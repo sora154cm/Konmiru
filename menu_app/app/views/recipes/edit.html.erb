@@ -8,6 +8,8 @@
 <%= form_with(model: [@user, @recipe], local: true, html: { multipart: true }, method: :patch) do |f| %>
   <!-- ユーザーIDを取得 -->
   <%= f.hidden_field :user_id, value: @current_user.id, id: "user_id" %>
+  <!-- レシピIDを取得 -->
+  <%= f.hidden_field :id, value: @recipe.id, id: "recipe_id" %> 
 
   <!-- @recipe.recipe_imageが存在すればそれを表示し、存在しなければデフォルトの画像を表示 -->
   <% if @recipe.recipe_image.present? %>
@@ -52,5 +54,10 @@
   </div>
 <% end %>
 
+<script>
+  // HTMLからIDを取得
+  window.userId = document.getElementById('user_id').value;
+  window.recipeId = document.getElementById('recipe_id').value;
+</script>
 <!-- JavaScriptファイルの読み込み -->
 <script src="/recipe/recipe_edit.js"></script>
