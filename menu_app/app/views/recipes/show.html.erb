@@ -1,16 +1,19 @@
-<h1>レシピ詳細ページ</h1>
-
-<div><%= link_to "トップページ", root_path %></div>
-
-<!-- レシピ編集ページ　-->
-<div><%= link_to "レシピを編集する", edit_user_recipe_path %></div>
-
 <!-- フラッシュメッセージ -->
 <% if flash[:notice] %>
   <div class="user-registration message">
     <%= flash[:notice] %>
   </div>
 <% end %>
+
+<h1>レシピ詳細ページ</h1>
+
+<div><%= link_to "トップページ", root_path %></div>
+
+<!-- レシピ編集ページ -->
+<div><%= link_to "レシピを編集する", edit_user_recipe_path %></div>
+
+<!-- レシピ削除ボタン -->
+<div><%= link_to "レシピを削除する", user_recipe_path(@recipe), data: { turbo_method: :delete, turbo_confirm: '本当に削除しますか？' } %></div>
 
 <!-- 投稿したレシピ画像が存在すればそれを表示し、存在しなければデフォルトの画像を表示 -->
 <% if @recipe.recipe_image.attached? %>

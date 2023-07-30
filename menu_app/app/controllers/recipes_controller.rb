@@ -32,6 +32,14 @@ class RecipesController < ApplicationController
     end
   end
 
+  def destroy
+    @recipe = Recipe.find(params[:id])
+    @recipe.recipe_ingredients.destroy_all
+    @recipe.destroy
+    flash[:notice] = "レシピの削除が完了しました!"
+    redirect_to root_path
+  end
+
   def show
     @user = User.find(params[:user_id])
     @recipe = Recipe.find(params[:id])

@@ -21,7 +21,7 @@ Rails.application.routes.draw do
       get :result
     end
     # レシピ関連のルーティング(ユーザー関連の中にネスト)
-    resources :recipes, only: [:index, :show, :new, :create, :edit, :update] do
+    resources :recipes, only: [:index, :show, :new, :create, :edit, :update, :destroy] do
       post :create_ingredient, on: :member
       delete :delete_ingredient, on: :member
     end

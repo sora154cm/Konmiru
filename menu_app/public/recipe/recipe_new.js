@@ -48,7 +48,7 @@ document.getElementById('submit-button').addEventListener('click', (event) => {
   for (let i = 0; i < ingredientInputs.length; i++) {
     // 空の食材inputがあればアラートを出して処理を終了
     if (ingredientInputs[i].value == '') {
-      alert('食材を一つ以上入力してください');
+      alert('入力されてない食材名があります');
       return;
     }
   }
