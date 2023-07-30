@@ -10,8 +10,8 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_07_15_074331) do
-  create_table "active_storage_attachments", force: :cascade do |t|
+ActiveRecord::Schema[7.0].define(version: 2023_07_30_142544) do
+  create_table "active_storage_attachments", charset: "utf8mb3", force: :cascade do |t|
     t.string "name", null: false
     t.string "record_type", null: false
     t.bigint "record_id", null: false
@@ -21,7 +21,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_15_074331) do
     t.index ["record_type", "record_id", "name", "blob_id"], name: "index_active_storage_attachments_uniqueness", unique: true
   end
 
-  create_table "active_storage_blobs", force: :cascade do |t|
+  create_table "active_storage_blobs", charset: "utf8mb3", force: :cascade do |t|
     t.string "key", null: false
     t.string "filename", null: false
     t.string "content_type"
@@ -33,27 +33,28 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_15_074331) do
     t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
   end
 
-  create_table "active_storage_variant_records", force: :cascade do |t|
+  create_table "active_storage_variant_records", charset: "utf8mb3", force: :cascade do |t|
     t.bigint "blob_id", null: false
     t.string "variation_digest", null: false
     t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
   end
 
-  create_table "ingredients", force: :cascade do |t|
+  create_table "ingredients", charset: "utf8mb3", force: :cascade do |t|
     t.string "ingredient_name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  create_table "recipe_ingredients", force: :cascade do |t|
-    t.integer "recipe_id"
-    t.integer "ingredient_id"
+  create_table "recipe_ingredients", charset: "utf8mb3", force: :cascade do |t|
+    t.bigint "recipe_id"
+    t.bigint "ingredient_id"
+    t.integer "position"
     t.index ["ingredient_id"], name: "index_recipe_ingredients_on_ingredient_id"
     t.index ["recipe_id"], name: "index_recipe_ingredients_on_recipe_id"
   end
 
-  create_table "recipes", force: :cascade do |t|
-    t.integer "user_id"
+  create_table "recipes", charset: "utf8mb3", force: :cascade do |t|
+    t.bigint "user_id"
     t.string "recipe_name"
     t.string "recipe_image"
     t.text "recipe_process"
@@ -62,7 +63,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_15_074331) do
     t.index ["user_id"], name: "index_recipes_on_user_id"
   end
 
-  create_table "users", force: :cascade do |t|
+  create_table "users", charset: "utf8mb3", force: :cascade do |t|
     t.string "login_key"
     t.string "user_name"
     t.string "profile_image"

@@ -1,7 +1,5 @@
 class RecipesController < ApplicationController
-
-  protect_from_forgery except: [:create_ingredient, :delete_ingredient]
-  
+  protect_from_forgery except: [:create, :update]
   before_action :authenticate_user
 
   # ログインしていなかったらログイン画面にリダイレクトする
@@ -20,17 +18,15 @@ class RecipesController < ApplicationController
   def create
     @recipe = Recipe.new(recipe_params)
     if @recipe.save
-      params[:ingredients].each do |ingredient_name|
+      params[:ingredients].each_with_index do |ingredient_name, index|
         # 食材が既に存在するかチェック
         ingredient = Ingredient.find_or_create_by(ingredient_name: ingredient_name)
-        # レシピと食材を関連付け
-        RecipeIngredient.create(recipe: @recipe, ingredient: ingredient)
+        # レシピと食材を関連付け、positionフィールドを設定
+        RecipeIngredient.create(recipe: @recipe, ingredient: ingredient, position: index)
       end
       flash[:notice] = "レシピ登録ができました!"
       redirect_to user_recipe_path(@recipe.user, @recipe)
     else
-      # Turboはリダイレクトを期待しているため
-      # リダイレクト後にエラーメッセージを表示するためにフラッシュメッセージの方法をとる必要がある
       flash[:alert] = @recipe.errors.full_messages
       redirect_to new_user_recipe_path
     end
@@ -49,36 +45,33 @@ class RecipesController < ApplicationController
   def update
     @recipe = Recipe.find(params[:id])
     if @recipe.update(recipe_params)
-      @recipe.ingredients.each_with_index do |ingredient, index|
+      @recipe.recipe_ingredients.order(:position).each_with_index do |recipe_ingredient, index|
+        ingredient = recipe_ingredient.ingredient
         if params[:ingredients][index].blank?
           # 先に関連付けられている RecipeIngredient を削除
-          @recipe.recipe_ingredients.where(ingredient_id: ingredient.id).destroy_all
+          recipe_ingredient.destroy
         else
-          ingredient.update(ingredient_name: params[:ingredients][index])
+          # 食材が既に存在するかチェックし、なければ作成
+          ingredient = Ingredient.find_or_create_by(ingredient_name: params[:ingredients][index])
+          recipe_ingredient.update(ingredient: ingredient, position: index) # positionとingredientの更新
         end
       end
+
+      # 新規に追加された食材の処理
+      if params[:ingredients].length > @recipe.recipe_ingredients.count
+        params[:ingredients][@recipe.recipe_ingredients.count..-1].each_with_index do |ingredient_name, index|
+          # 食材が既に存在するかチェックし、なければ作成
+          ingredient = Ingredient.find_or_create_by(ingredient_name: ingredient_name)
+          # レシピと食材を関連付け、positionフィールドを設定
+          RecipeIngredient.create(recipe: @recipe, ingredient: ingredient, position: @recipe.recipe_ingredients.count + index)
+        end
+      end
+
       flash[:notice] = "レシピ編集が完了しました!"
       redirect_to user_recipe_path(@recipe.user, @recipe)
     else
       render :edit
     end
-  end
-
-  def create_ingredient
-    @user = User.find(params[:user_id])
-    @recipe = @user.recipes.find(params[:id])
-    @ingredient = Ingredient.create(ingredient_name: params[:ingredient_name])
-    RecipeIngredient.create(recipe: @recipe, ingredient: @ingredient)
-    render json: { id: @ingredient.id }
-  end
-
-  def delete_ingredient
-    @user = User.find(params[:user_id])
-    @recipe = @user.recipes.find(params[:id])
-    @ingredient = Ingredient.find(params[:ingredient_id])
-    RecipeIngredient.where(recipe: @recipe, ingredient: @ingredient).destroy_all
-    @ingredient.destroy if @ingredient.recipes.count == 0
-    head :no_content
   end
 
   private
