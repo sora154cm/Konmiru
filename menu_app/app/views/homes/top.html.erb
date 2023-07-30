@@ -18,6 +18,10 @@
   <!-- レシピ登録ページリンク -->
   <div><%= link_to "レシピ登録ページ", new_user_recipe_path(@current_user) %></div>
 
+  <!-- プロフィール編集ページリンク -->
+  <div><%= link_to "プロフィール編集ページ", edit_user_path(@recipe.user) %></div>
+
+
   <%= form_with(url: result_user_path(@current_user), method: "get", local: true) do %>
     <%= label_tag :ingredient_name, '食材名' %>
     <%= text_field_tag :ingredient_name %>

@@ -7,7 +7,7 @@
 <div>
   <!-- ユーザー名とユーザーの画像を表示 -->
   <div>
-    <h4><%= recipe.user.user_name.presence || "ユーザー(#{recipe.user.id})" %></h4>
+    <h4><%= link_to (recipe.user.user_name.presence || "ユーザー(#{recipe.user.id})"), user_path(recipe.user) %></h4>
     <!-- ユーザーのプロフィール画像が存在すればそれを表示し、存在しなければデフォルトの画像を表示 -->
     <% if recipe.user.profile_image.present? %>
       <%= image_tag recipe.user.profile_image, size: '100x100' %>

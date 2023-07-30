@@ -34,6 +34,7 @@ class RecipesController < ApplicationController
 
   def destroy
     @recipe = Recipe.find(params[:id])
+    # 先に子の関係となるデータを削除
     @recipe.recipe_ingredients.destroy_all
     @recipe.destroy
     flash[:notice] = "レシピの削除が完了しました!"
