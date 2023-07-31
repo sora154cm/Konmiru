@@ -31,6 +31,7 @@ function createNewIngredient(formCount) {
   // さらにingredient-additionクラスの中に子要素として入れる
   document.querySelector('.ingredient-addition').appendChild(newFormContainer);
 }
+
 // 食材を追加ボタンを押すとフォームが追加
 document.querySelector('.add-ingredient-button').addEventListener('click', () => {
   // .ingredient-input要素の数に+1をした要素の数を取得

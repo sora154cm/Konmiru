@@ -1,3 +1,13 @@
+// HTMLからIDを取得
+window.userId = document.getElementById('user_id').value;
+window.recipeId = document.getElementById('recipe_id').value;
+
+// 選択した食材の要素を削除する関数を定義
+window.deleteIngredient = function(ingredientId) {
+  var ingredientDiv = document.getElementById(`ingredient_${ingredientId}`);
+  ingredientDiv.remove();
+};
+
 // ~食材追加のフォーム追加や削除に伴う編集処理開始~
 function createNewIngredient(formCount) {
   // フォームを作成
