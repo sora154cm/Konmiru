@@ -13,6 +13,7 @@ class HomesController < ApplicationController
 
   def top
     @users =User.all
+    @user = 
     # N+1問題を解消
     @current_user.recipes = @current_user.recipes.with_attached_recipe_image
     @recipe = Recipe.first

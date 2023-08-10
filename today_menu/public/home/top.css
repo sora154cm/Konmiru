@@ -1,0 +1,51 @@
+body {
+  margin:0px;
+  background-color: rgb(243, 250, 245);
+  /* 基本の文字色 */
+  color:#444;
+}
+
+header {
+  width:100%;
+  height: 70px;
+  background-color: white;
+  border-bottom:1px solid rgb(9, 129, 9);
+}
+
+.header-actions {
+  height: 70px;
+  display: flex;  /* flexboxを使う */
+  justify-content: space-between;  /* 子要素間のスペースを均等にする */
+  align-items:stretch;;  /* 中央に配置する */
+  width: 100%;  /* 全幅にする */
+}
+
+.header-actions > div {
+  flex: 1;  /* 各要素が均等に広がるようにする */
+  text-align: center;  /* 中央にテキストを配置する */
+  border-right: 1px solid #ddd;  /* 境界のボーダー線を追加 */
+  padding: 0 10px;  /* 両側に少しスペースを持たせる */
+  display: flex;           /* 各ブロックをフレックスボックスにする */
+  justify-content: center; /* 横方向に中央寄せ */
+  align-items: center;     /*  縦方向に中央寄せ */
+}
+
+.header-actions > div:last-child {
+  border-right: none;  /* 最後の要素の右側のボーダー線を消す */
+}
+
+.header-log{
+  font-size:1em;
+  color:rgb(9, 129, 9);
+  font-weight: 600;
+}
+
+.profile-image img {
+  border-radius: 50%; /* 円形にする */
+}
+
+/* メイン部分 */
+main {
+  width:60%;
+  margin:0 auto;
+}

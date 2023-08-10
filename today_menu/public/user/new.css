@@ -51,17 +51,13 @@ main {
 
 .form-label {
   margin-right:0.5em;
+  font-size:0.9em;
 }
 
 .field_with_errors {
   display: block;
   font-size: 0.8em;
   color:rgb(254, 48, 48);
-}
-
-.label-container {
-  display: inline-block; /* これにより、要素が横に配置されます */
-  vertical-align: top;   /* これにより、要素が上端に揃います */
 }
 
 .login-form {

@@ -2,6 +2,13 @@
 
 <div><%= link_to "トップページ", root_path %></div>
 
+<!-- 検索フォーム -->
+  <%= form_with(url: result_user_path(@current_user), method: "get", local: true, id: "ingredient_search_form") do %>
+    <%= label_tag :ingredient_name, '食材名' %>
+    <%= text_field_tag :ingredient_name, nil, id: "ingredient_name"%>
+    <%= submit_tag '検索' %>
+  <% end %>
+
 <% if @recipes.any? %>
   <% @recipes.each do |recipe| %>
     <div>
@@ -17,3 +24,6 @@
 <% else %>
   <p>該当するレシピが見つかりませんでした。</p>
 <% end %>
+
+<!-- JavaScriptファイルの読み込み -->
+<script src="/home/home.js"></script>

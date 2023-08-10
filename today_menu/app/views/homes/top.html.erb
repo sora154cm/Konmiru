@@ -1,56 +1,70 @@
-<!-- フラッシュメッセージ -->
-<% if flash[:notice] %>
-  <div class="user-registration message">
-    <%= flash[:notice] %>
+<!-- CSSファイルの読み込み -->
+<link rel="stylesheet" href="/home/top.css">
+
+<!-- ヘッダー部分 -->
+<header>
+  <div class="header-actions">
+    <div class="header-log">
+      <a><i class="fa-solid fa-key"></i>こんみる</a>
+    </div>
+    <!-- ログアウトリンク -->
+    <div><%= link_to "ログアウト", logout_path, data: { turbo_method: :delete } %></div>
+    <!-- ユーザー一覧ページ -->
+    <div><%= link_to "みんなのレシピ", users_all_path %></div>
+    <!-- プロフィール編集ページリンク -->
+    <div><%= link_to "編集", edit_user_path(@current_user) %></div>
+  
+    <!-- プロフィール写真 -->
+    <div class="profile-image">
+      <% if @current_user.profile_image.attached? %>
+        <%= image_tag @current_user.profile_image, size: '50x50' %>
+      <% else %>
+      <%= image_tag "no_image.png", size: '50x50' %>
+      <% end %>
+    </div>
   </div>
-<% end %>
+    
+</header>
 
 
-<h1>トップページ(Homes#top)</h1>
-<p>食材でレシピを検索等</p>
 
-<!-- ログアウトリンク -->
-<div><%= link_to "ログアウト", logout_path, data: { turbo_method: :delete } %></div>
-<!-- ユーザー一覧ページ -->
-<div><%= link_to "一覧ページ", users_all_path %></div>
-
-<% if @current_user %>
-  <!-- レシピ登録ページリンク -->
-  <div><%= link_to "レシピ登録ページ", new_user_recipe_path(@current_user) %></div>
-
-  <!-- プロフィール編集ページリンク -->
-  <div><%= link_to "プロフィール編集ページ", edit_user_path(@current_user) %></div>
-
-
-  <%= form_with(url: result_user_path(@current_user), method: "get", local: true, id: "ingredient_search_form") do %>
-    <%= label_tag :ingredient_name, '食材名' %>
-    <%= text_field_tag :ingredient_name, nil, id: "ingredient_name"%>
-    <%= submit_tag '検索' %>
+<main>
+  <h1>トップページ(Homes#top)</h1>
+  <p>食材でレシピを検索等</p>
+  
+    <!-- レシピ登録ページリンク -->
+    <div><%= link_to "レシピ登録ページ", new_user_recipe_path(@current_user) %></div>
+  
+    <!-- 検索フォーム -->
+    <%= form_with(url: result_user_path(@current_user), method: "get", local: true, id: "ingredient_search_form") do %>
+      <%= label_tag :ingredient_name, '食材名' %>
+      <%= text_field_tag :ingredient_name, nil, id: "ingredient_name"%>
+      <%= submit_tag '検索' %>
+  
+    <!-- ユーザーのレシピ一覧 -->
+    <h2>あなたのレシピ</h2>
+    <% @current_user.recipes.each do |recipe| %>
+    <div>
+      <h3><%= link_to recipe.recipe_name, user_recipe_path(recipe.user, recipe) %></h3>
+      <!-- 投稿したレシピ画像が存在すればそれを表示し、存在しなければデフォルトの画像を表示 -->
+      <% if recipe.recipe_image.attached? %>
+        <%= image_tag url_for(recipe.recipe_image), size: '300x200' %>
+      <% else %>
+        <%= image_tag "no_image.png", size: '300x200' %>
+      <% end %>
+    </div>
+    <% end %>
   <% end %>
   
-  <!-- ユーザーのレシピ一覧 -->
-  <h2>あなたのレシピ</h2>
-  <% @current_user.recipes.each do |recipe| %>
-  <div>
-    <h3><%= link_to recipe.recipe_name, user_recipe_path(recipe.user, recipe) %></h3>
-    <!-- 投稿したレシピ画像が存在すればそれを表示し、存在しなければデフォルトの画像を表示 -->
-    <% if recipe.recipe_image.attached? %>
-      <%= image_tag url_for(recipe.recipe_image), size: '300x200' %>
-    <% else %>
-      <%= image_tag "no_image.png", size: '300x200' %>
-    <% end %>
-  </div>
+  
+  <h2>全ユーザーのログインIDとパスワード</h2>
+  <% @users.each do |user| %>
+    <div>
+      <p>ログインID: <%= user.login_key %></p>
+      <p>パスワード: <%= user.password_digest %></p>
+    </div>
   <% end %>
-<% end %>
-
-
-<h2>全ユーザーのログインIDとパスワード</h2>
-<% @users.each do |user| %>
-  <div>
-    <p>ログインID: <%= user.login_key %></p>
-    <p>パスワード: <%= user.password_digest %></p>
-  </div>
-<% end %>
+</main>
 
 <!-- JavaScriptファイルの読み込み -->
 <script src="/home/home.js"></script>
