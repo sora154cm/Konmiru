@@ -1,29 +1,69 @@
-<!-- フラッシュメッセージ -->
-<% if flash[:alert] %>
-  <% flash[:alert].each do |message| %>
-    <div class="user-alert message">
-      <%= message %>
+<!-- CSSファイルの読み込み -->
+<link rel="stylesheet" href="/user/new.css">
+
+<!-- ヘッダー部分 -->
+<header>
+  <div class="header-log">
+    <a><i class="fa-solid fa-share-from-square"></i>新規登録</a>
+  </div>
+</header>
+
+
+<!-- コンテンツ部分 -->
+<main>
+  <div class="mini-message">
+    <h3>新規登録がお済みでない方</h3>
+  </div>
+
+  <div class="form-message">
+    <p>ログインIDとパスワードで新規登録</p>
+  </div>
+
+  <!-- 新規登録フォーム開始 -->
+  <%= form_with(url: users_path) do |f| %>
+  <div class="forms">
+    <div class="label-container">
+      <a class="form-label">ログインID</a>
     </div>
-  <% end %>
-<% end %>
-
-<h1>新規登録ページ</h1>
-
-<%= form_with(url: users_path) do |f| %>
-  <div>
-    <p>ログインID</p>
-    <%= f.text_field :login_key %>
+    <div class="form-input-container">
+      <%= f.text_field :login_key, placeholder: '8文字以上で登録してください', class: "login-form" %>
+      <!-- エラーメッセージ -->
+      <% if @user.errors[:login_key].any? %>
+        <div class="field_with_errors">
+          <%= @user.errors.full_messages_for(:login_key).join(", ") %>
+        </div>
+      <% end %>
+    </div>
   </div>
 
-  <div>
-    <p>パスワード</p>
-    <%= f.password_field :password, placeholder: '8文字以上で入力してください' %>
-  </div>
-
-  <div>
-    <%= f.submit "新規登録", placeholder: '8文字以上で入力してください' %>
+  <div class="forms">
+    <div class="label-container">
+      <a class="form-label">パスワード</a>
+    </div>
+    <div class="form-input-container">
+      <%= f.password_field :password, placeholder: "8文字以上で登録してください", class: "password-form" %>
+      <!-- エラーメッセージ -->
+      <% if @user.errors[:password].any? %>
+        <div class="field_with_errors">
+          <%= @user.errors.full_messages_for(:password).join(", ") %>
+        </div>
+      <% end %>
+    </div>
   </div>
   
-<% end %>
+    <div class="new-login">
+      <%= f.submit "新規登録する", class: "login btn" %>
+    </div>
+  
+  <% end %>
+  <!-- 新規登録フォーム終了 -->
+  
+  <div class="mini-message">
+    <h3>新規登録済がお済みの方</h3>
+  </div>
 
-<%= link_to "新規登録済の場合はこちらから", login_path %>
+  <div class="new-registration">
+    <%= link_to "ログインする", login_path, class: "registration btn" %>
+  </div>
+
+</main>

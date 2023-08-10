@@ -17,12 +17,12 @@ class SessionsController < ApplicationController
         return
       else
         # パスワードが間違っている場合のエラーメッセージ
-        @user.errors.add(:password, 'パスワードが間違っています。')
+        @user.errors.add(:password, 'パスワードが正しくありません')
       end
     else
       # ユーザーが存在しない場合のエラーメッセージ
       @user = User.new
-      @user.errors.add(:login_key, 'ログインIDが間違っています。')
+      @user.errors.add(:login_key, 'ログインIDが正しくありません')
     end
   
     render :new, status: :unprocessable_entity

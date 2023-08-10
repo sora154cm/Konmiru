@@ -19,7 +19,7 @@
 <!-- コンテンツ部分 -->
 <main>
   <div class="mini-message">
-    <h3>登録がお済みの方</h3>
+    <h3>新規登録がお済みの方</h3>
   </div>
 
   <div class="form-message">
@@ -28,8 +28,12 @@
 
   <!-- ログインフォーム開始 -->
   <%= form_with(url: login_path) do |f| %>
-    <div class="forms">
-      <a class="form-label">ログインID</a><%= f.text_field :login_key, placeholder: "ログインIDを入力してください", class: "login-form" %>
+  <div class="forms">
+    <div class="label-container">
+      <a class="form-label">ログインID</a>
+    </div>
+    <div class="form-input-container">
+      <%= f.text_field :login_key, placeholder: "ログインIDを入力してください", class: "login-form" %>
       <!-- エラーメッセージ -->
       <% if @user.errors[:login_key].any? %>
         <div class="field_with_errors">
@@ -37,18 +41,22 @@
         </div>
       <% end %>
     </div>
-    
-  
-    <div class="forms">
-      <a class="form-label">パスワード</a><%= f.password_field :password, placeholder: "パスワードを入力してください", class: "password-form" %>
+  </div>
+
+  <div class="forms">
+    <div class="label-container">
+      <a class="form-label">パスワード</a>
+    </div>
+    <div class="form-input-container">
+      <%= f.password_field :password, placeholder: "パスワードを入力してください", class: "password-form" %>
       <!-- エラーメッセージ -->
       <% if @user.errors[:password].any? %>
-      <div class="field_with_errors">
-        <%= @user.errors[:password].join(", ") %>
-      </div>
+        <div class="field_with_errors">
+          <%= @user.errors[:password].join(", ") %>
+        </div>
       <% end %>
     </div>
-    
+  </div>
   
     <div class="new-login">
       <%= f.submit "ログインする", class: "login btn" %>
@@ -58,7 +66,7 @@
   <!-- ログインフォーム終了 -->
   
   <div class="mini-message">
-    <h3>登録がお済みでない方</h3>
+    <h3>新規登録がお済みでない方</h3>
   </div>
 
   <div class="new-registration">

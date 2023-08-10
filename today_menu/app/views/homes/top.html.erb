@@ -22,9 +22,9 @@
   <div><%= link_to "プロフィール編集ページ", edit_user_path(@current_user) %></div>
 
 
-  <%= form_with(url: result_user_path(@current_user), method: "get", local: true) do %>
+  <%= form_with(url: result_user_path(@current_user), method: "get", local: true, id: "ingredient_search_form") do %>
     <%= label_tag :ingredient_name, '食材名' %>
-    <%= text_field_tag :ingredient_name %>
+    <%= text_field_tag :ingredient_name, nil, id: "ingredient_name"%>
     <%= submit_tag '検索' %>
   <% end %>
   
@@ -51,6 +51,9 @@
     <p>パスワード: <%= user.password_digest %></p>
   </div>
 <% end %>
+
+<!-- JavaScriptファイルの読み込み -->
+<script src="/home/home.js"></script>
 
 
 

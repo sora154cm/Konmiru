@@ -21,7 +21,7 @@ header {
   margin:0 auto;
 }
 
-.fa-key {
+.fa-share-from-square {
   margin-right: 0.5em;
 }
 
@@ -75,13 +75,14 @@ main {
 }
 
 .login {
-  background-color:#fb914a;
+  background-color: #66450f;;
   color:white;
-  border: 1px solid #fb914a;
+  border: 1px solid #66450f;
 }
 
 .login:hover {
-  background-color:#f3a876;
+  background-color:rgb(136, 97, 41);
+  color:white;
 }
 
 .btn {
@@ -107,11 +108,11 @@ main {
   text-decoration: none;
   color:white;
   font-size:13px;
-  background-color: #66450f;
+  background-color: #fb914a;
   text-align: center;
   line-height:30px;
 }
 
 .registration:hover {
-  background-color: rgb(136, 97, 41);
+  background-color: #f3a876;
 }
