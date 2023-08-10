@@ -45,12 +45,22 @@ main {
   font-size:0.8em;
 }
 
+.forms {
+  margin-bottom:0.5em;
+}
+
+.form-label {
+  margin-right:0.5em;
+}
+
 .login-form {
-  width:90%;
+  width:200px;
+  height: 20px;
 }
 
 .password-form {
-  width:90%;
+  width:200px;
+  height: 20px;
 }
 
 .login {
@@ -65,6 +75,9 @@ main {
 }
 
 .btn {
+  display: inline-block;
+  width: 120px; 
+  height: 30px; 
   box-shadow: 0px 2px #524b42;
   border-radius: 5px;
   position: relative;
@@ -77,13 +90,14 @@ main {
 }
 
 .new-registration {
-  margin-top:3em;
+  margin-top:0.5em;
 }
 
 .registration {
   text-decoration: none;
   color:white;
   font-size:13px;
-  padding:0.3em 0.5em;
   background-color: #66450f;
+  text-align: center;
+  line-height:30px;
 }
