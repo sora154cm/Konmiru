@@ -1,0 +1,57 @@
+<!-- CSSファイルの読み込み -->
+<link rel="stylesheet" href="/session/new.css">
+
+<!-- ヘッダー部分 -->
+<header>
+  <div class="header-log">
+    <a><i class="fa-solid fa-key"></i>ログイン</a>
+  </div>
+</header>
+
+
+<!-- ログアウト時のフラッシュメッセージ -->
+<% if flash[:notice] %>
+  <div class="user-registration message">
+    <%= flash[:notice] %>
+  </div>
+<% end %>
+
+<!-- コンテンツ部分 -->
+<main>
+  <div class="mini-message">
+    <h3>登録がお済みの方</h3>
+  </div>
+
+  <div class="form-message">
+    <p>ログインIDとパスワードでログイン</p>
+  </div>
+
+  <%= form_with(url: login_path) do |f| %>
+    <div>
+      <a>ログインID</a><%= f.text_field :login_key, placeholder: "ログインIDを入力してください", class: "login-form" %>
+    </div>
+    <% if @user.errors[:login_key].any? %>
+      <div class="field_with_errors">
+        <%= @user.errors[:login_key].join(", ") %>
+      </div>
+    <% end %>
+  
+    <div>
+      <a>パスワード</a><%= f.password_field :password, placeholder: "パスワードを入力してください", class: "password-form" %>
+    </div>
+    <% if @user.errors[:password].any? %>
+      <div class="field_with_errors">
+        <%= @user.errors[:password].join(", ") %>
+      </div>
+    <% end %>
+  
+    <div class="new-login">
+      <%= f.submit "ログインする", class: "login btn" %>
+    </div>
+  
+  <% end %>
+  
+  <div class="new-registration">
+    <%= link_to "新規登録", signup_path, class: "registration btn" %>
+  </div>
+</main>

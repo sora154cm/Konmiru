@@ -1,0 +1,29 @@
+<!-- フラッシュメッセージ -->
+<% if flash[:alert] %>
+  <% flash[:alert].each do |message| %>
+    <div class="user-alert message">
+      <%= message %>
+    </div>
+  <% end %>
+<% end %>
+
+<h1>新規登録ページ</h1>
+
+<%= form_with(url: users_path) do |f| %>
+  <div>
+    <p>ログインID</p>
+    <%= f.text_field :login_key %>
+  </div>
+
+  <div>
+    <p>パスワード</p>
+    <%= f.password_field :password, placeholder: '8文字以上で入力してください' %>
+  </div>
+
+  <div>
+    <%= f.submit "新規登録", placeholder: '8文字以上で入力してください' %>
+  </div>
+  
+<% end %>
+
+<%= link_to "新規登録済の場合はこちらから", login_path %>

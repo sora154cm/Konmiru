@@ -1,0 +1,37 @@
+<!-- フラッシュメッセージ -->
+<% if flash[:notice] %>
+  <div class="user-registration message">
+    <%= flash[:notice] %>
+  </div>
+<% end %>
+
+<h1>レシピ詳細ページ</h1>
+
+<div><%= link_to "トップページ", root_path %></div>
+
+<!-- レシピ編集ページ -->
+<div><%= link_to "レシピを編集する", edit_user_recipe_path %></div>
+
+<!-- レシピ削除ボタン -->
+<div><%= link_to "レシピを削除する", user_recipe_path(@recipe), data: { turbo_method: :delete, turbo_confirm: '本当に削除しますか？' } %></div>
+
+<!-- 投稿したレシピ画像が存在すればそれを表示し、存在しなければデフォルトの画像を表示 -->
+<% if @recipe.recipe_image.attached? %>
+  <%= image_tag @recipe.recipe_image, size: '300x200' %>
+<% else %>
+  <%= image_tag "no_image.png", size: '300x200' %>
+<% end %>
+
+<!-- レシピの名前 -->
+<p><strong>レシピ名:</strong> <%= @recipe.recipe_name %></p>
+
+<!-- レシピの調理過程 -->
+<p><strong>調理過程:</strong></p>
+<%= @recipe.recipe_process %>
+
+<!-- 食材リスト -->
+<p><strong>食材リスト</strong></p>
+<% @recipe.ingredients.each do |ingredient| %>
+  <%= ingredient.ingredient_name %><br>
+<% end %>
+
