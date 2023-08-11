@@ -133,29 +133,21 @@ main {
 /* ～食材リスト */
 
 .recipe-process {
-  width:90%;
-  margin:auto;
   border: 0.2em solid  #fb914a;
   border-radius: 0.4em;
   height: 7em;
+  margin-top:1em;
+  background-color: white;
 }
 
-.recipe {
-  background-color: #fb914a;
-  color:white;
-  font-weight: 600;
-  border: 1px solid #fb914a;
-}
-
-.recipe:hover {
-  background-color:#f3a876;
-  color:white;
+.recipe-process-text {
+  text-align: left;
 }
 
 .btn {
   display: inline-block;
-  width: 150px; 
-  height: 30px; 
+  width: 200px; 
+  height: 40px; 
   box-shadow: 0px 2px #524b42;
   border-radius: 5px;
   position: relative;
@@ -166,3 +158,38 @@ main {
   top: 2px;
   box-shadow: none;
 }
+
+.new-registration {
+  margin-top:0.5em;
+}
+
+.recipe-edit {
+  text-decoration: none;
+  margin-top:1em;
+  color:white;
+  font-size:14px;
+  font-weight: 600;
+  background-color: #fb914a;
+  text-align: center;
+  line-height:40px;
+}
+
+.recipe-edit:hover {
+  background-color: #f3a876;
+}
+
+.recipe-delete {
+  text-decoration: none;
+  margin-top:1em;
+  color:white;
+  font-size:14px;
+  font-weight: 600;
+  background-color: #8f2f2a;
+  text-align: center;
+  line-height:40px;
+}
+
+.recipe-delete:hover {
+  background-color: #b46b67;
+}
+

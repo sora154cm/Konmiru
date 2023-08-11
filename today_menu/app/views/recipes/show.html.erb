@@ -55,18 +55,17 @@
   <!-- レシピの調理過程 -->
   <div class="recipe-process">
     <div class="recipe-process-text">
-      <p class="recipe-process-container-title">調理過程</p>
       <%= @recipe.recipe_process %>
     </div>
   </div>
   
-  <% if @current_user %>
+  <% if @current_user == @recipe.user %>
     <!-- レシピ編集ページ -->
-    <div><%= link_to "レシピを編集する", edit_user_recipe_path %></div>
+    <div><%= link_to "レシピを編集する", edit_user_recipe_path, class: "recipe-edit btn" %></div>
   
     <!-- レシピ削除ボタン -->
     <div>
-      <%= link_to "レシピを削除する", user_recipe_path(@recipe), data: { turbo_method: :delete, turbo_confirm: '本当に削除しますか？' } %>
+      <%= link_to "レシピを削除する", user_recipe_path(@recipe), data: { turbo_method: :delete, turbo_confirm: '本当に削除しますか？' }, class: "recipe-delete btn" %>
     </div>
   <% end %>
 </main>
