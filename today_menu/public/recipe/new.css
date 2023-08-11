@@ -1,0 +1,173 @@
+body {
+  margin:0px;
+  background-color: rgb(243, 250, 245);
+  /* 基本の文字色 */
+  color:#444;
+}
+
+header {
+  width:100%;
+  height: 70px;
+  background-color: white;
+  border-bottom:1px solid rgb(9, 129, 9);
+}
+
+.header-actions {
+  height: 70px;
+  display: flex;  
+   /* 子要素間のスペースを均等にする */
+  justify-content: space-between; 
+  align-items:stretch;;  
+  width: 100%; 
+}
+
+.header-actions > * {
+  flex: 1; 
+  text-align: center; 
+  border-right: 1px solid #ddd; 
+  padding: 0 2px;  
+  display: flex;           
+  justify-content: center; 
+  align-items: center;     
+}
+
+.header-actions > *:last-child {
+  border-right: none;  
+}
+
+/* ロゴ~ */
+.header-log{
+  color:#fb914a;
+  font-weight: 600;
+}
+
+.fa-utensils {
+  font-size:1.6em;
+}
+
+.logo-text {
+  font-size:0.8em;
+}
+/* ～ロゴ */
+
+.header-link {
+  text-decoration: none;
+  display: flex;           
+  flex-direction: column;  
+  align-items: center;
+}
+
+.link-icon {
+  color:rgb(9, 129, 9);
+  font-size:1.4em;
+}
+
+.header-link-text {
+  color:rgb(9, 129, 9);
+  font-size:0.6em;
+  font-weight: 600;
+}
+
+/* リンク全体に触れると色が変わる */
+.header-link:hover,
+.header-link:hover .link-icon,
+.header-link:hover .header-link-text {
+  color:rgb(118, 216, 118);
+}
+
+.profile-image img {
+  /* 円形は50% */
+  border-radius: 50%; 
+}
+/* ～ヘッダー */
+
+
+/* メイン部分 */
+main {
+  width:80%;
+  margin:0 auto;
+  text-align: center;
+}
+
+.search-text {
+  color:#66450f;
+  font-size:0.8em;
+  font-weight:600;
+  margin-bottom:0.8em;
+}
+
+.announce-text {
+  color:#fb914a;
+  font-size:0.8em;
+  font-weight:600;
+  margin-bottom:0.1em;
+  margin-top:0em;
+}
+
+.image {
+  border-radius: 0.3em;
+  border: 0.2em solid #fb914a;
+}
+
+.image:hover {
+  border: 0.1em solid #eebe9d;
+}
+
+.recipe_name_field {
+  border: 0.2em solid #fb914a;
+  border-radius: 0.4em;
+  width:180px;
+  height: 25px;
+  margin-top:0.2em;
+}
+
+.recipe_name_field:hover {
+  border: 0.2em solid#eebe9d;
+}
+
+/* 食材追加フォーム */
+.ingredient-addition {
+  margin: 1em 0;
+}
+
+.ingredient-list {
+  margin-bottom: 0.3em;
+}
+
+.ingredient-name-field {
+  margin: 0 auto;
+  text-align: left;
+  width: 280px;
+}
+
+.add-ingredient-button {
+  background-color: #fb914a;
+  margin-top:0em;
+  border: none;
+  border-radius: 0.4em;
+  color: white;
+  padding: 0.5em 1em;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.add-ingredient-button:hover {
+  background-color: #eebe9d;
+}
+
+.ingredient-input {
+  width:150px;
+  border: 0.2em solid #fb914a;
+  border-radius: 0.4em;
+  padding: 0.2em 0.5em;
+  margin-left: 0.3em;
+  margin-bottom: 0.3em;
+}
+
+.delete-ingredient-button {
+  background-color: #eee;
+  border: none;
+  margin-left: 0.5em;
+  cursor: pointer;
+}
+

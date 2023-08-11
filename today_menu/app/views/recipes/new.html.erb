@@ -1,41 +1,81 @@
+<!-- CSSファイルの読み込み -->
+<link rel="stylesheet" href="/recipe/new.css">
 
-<h1>レシピ登録ページ</h1>
-
-<div><%= link_to "トップページ", root_path %></div>
-
-
-<%= form_with(model: [@user, @recipe], local: true, html: { multipart: true }) do |f| %>
-  <!-- ユーザーIDを取得 -->
-  <%= f.hidden_field :user_id, value: @current_user.id, id: "user_id" %>
-
-  <!-- @recipe.recipe_imageが存在すればそれを表示し、存在しなければデフォルトの画像を表示 -->
-  <% if @recipe.recipe_image.present? %>
-    <%= image_tag @recipe.recipe_image, size: '300x200', class: 'image' %>
-  <% else %>
-    <%= image_tag "recipe_images/initial_recipe.png", size: '300x200', class: 'image' %>
-  <% end %>
-  <!-- 上記の画像をクリックすると画像選択(CSSで普段は非表示) -->
-  <%= f.file_field :recipe_image, id: 'recipe_image' %>
-  <!-- 仮メッセージ -->
-  <p>画像をクリックして写真をアップロード!</p>
-
-  <!-- レシピ名を登録 -->
-  <%= f.text_field :recipe_name, placeholder: "料理名を入力してください" %>
+<!-- ヘッダー部分 -->
+<header>
+  <div class="header-actions">
+    <div class="header-log">
+      <a><i class="fa-solid fa-utensils"></i></i><div class="logo-text">こんみる</div></a>
+    </div>
+    <!-- ログアウトリンク -->
+    <%= link_to logout_path, data: { turbo_method: :delete }, class:"header-link" do %>
+      <div class="link-icon"><i class="fa-solid fa-share-from-square"></i></div>
+      <div class="header-link-text">ログアウト</div>
+    <% end %>
+    <!-- ユーザー一覧ページ -->
+    <%= link_to users_all_path, class:"header-link" do %>
+      <div class="link-icon"><i class="fa-solid fa-users"></i></div>
+      <div class="header-link-text">レシピ一覧</div>
+    <% end %>
+    <!-- ホームページリンク -->
+    <%= link_to root_path, class:"header-link" do %>
+      <div class="link-icon"><i class="fa-solid fa-house"></i></div>
+      <div class="header-link-text">ホーム</div>
+    <% end %>
   
-  <!-- 食材を登録 -->
-  <div class="ingredient-addition">
-    <!-- POST通信が行われないようにtype="button"を明示 -->
-    <button type="button" class="add-ingredient-button">食材を追加する</button>
+    <!-- プロフィール写真 -->
+    <div class="profile-image">
+      <% if @current_user.profile_image.attached? %>
+        <%= image_tag @current_user.profile_image, size: '50x50' %>
+      <% else %>
+      <%= image_tag "no_image.png", size: '50x50' %>
+      <% end %>
+    </div>
   </div>
+</header>
+<!-- ヘッダー部分終了 -->
 
-  <!-- 調理工程を登録 -->
-  <%= f.text_area :recipe_process, placeholder: "調理工程を入力してください" %>
+<main>
+  <p class="search-text">レシピ名や使う食材名などを入れて<br>登録しましょう！</p>
 
-  <div>
-    <!-- Submit button -->
-    <%= f.submit "レシピを登録する", id: 'submit-button' %>
-  </div>
-<% end %>
+  <%= form_with(model: [@user, @recipe], local: true, html: { multipart: true }) do |f| %>
+    <!-- ユーザーIDを取得 -->
+    <%= f.hidden_field :user_id, value: @current_user.id, id: "user_id" %>
+
+    <p class="announce-text">画像を変更</p>
+    <!-- @recipe.recipe_imageが存在すればそれを表示し、存在しなければデフォルトの画像を表示 -->
+    <% if @recipe.recipe_image.present? %>
+      <%= image_tag @recipe.recipe_image, size: '200x140', class: 'image' %>
+    <% else %>
+      <%= image_tag "recipe_images/initial_recipe.png", size: '200x140', class: 'image' %>
+    <% end %>
+    <!-- 上記の画像をクリックすると画像選択(CSSで普段は非表示) -->
+    <%= f.file_field :recipe_image, id: 'recipe_image' %>
+  
+    <!-- レシピ名を登録 -->
+    <div>
+      <%= f.text_field :recipe_name, placeholder: "料理名を入力してください", class: "recipe_name_field" %>
+    </div>
+  
+    <!-- 食材を登録 -->
+    <div class="ingredient-addition">
+      <div class="ingredient-list">
+        <!-- この部分が食材の入力フォームのリスト -->
+      </div> 
+      <!-- POST通信が行われないようにtype="button"を明示 -->
+      <button type="button" class="add-ingredient-button">食材を追加する</button>
+    </div>
+
+  
+    <!-- 調理工程を登録 -->
+    <%= f.text_area :recipe_process, placeholder: "調理工程を入力してください" %>
+  
+    <div>
+      <!-- Submit button -->
+      <%= f.submit "レシピを登録する", id: 'submit-button' %>
+    </div>
+  <% end %>
+</main>
 
 <!-- JavaScriptファイルの読み込み -->
 <script src="/recipe/recipe_new.js"></script>

@@ -10,7 +10,7 @@ function createNewIngredient(formCount) {
   // ラベルを作成
   const newLabel = document.createElement('label');
   // label要素を食材():となるように定義
-  newLabel.textContent = `食材(${formCount})：`;
+  newLabel.textContent = `食材(${formCount})`;
   // 新しい削除ボタンを作成
   const deleteButton = document.createElement('button');
   deleteButton.textContent = '-';
@@ -21,6 +21,8 @@ function createNewIngredient(formCount) {
   });
   // 新しいフォームと削除ボタンを含むための(div)を作成
   const newFormContainer = document.createElement('div');
+  // 作成した(div)にingredient-name-fieldクラスを追加
+  newFormContainer.classList.add('ingredient-name-field');
   // 作成した(div)の中に子要素として作成したフォーム、ラベル、削除ボタンを入れる
   newFormContainer.appendChild(newLabel);
   newFormContainer.appendChild(newForm);
@@ -28,8 +30,8 @@ function createNewIngredient(formCount) {
   if (formCount !== 1) {
     newFormContainer.appendChild(deleteButton);
   }
-  // さらにingredient-additionクラスの中に子要素として入れる
-  document.querySelector('.ingredient-addition').appendChild(newFormContainer);
+  // さらに.ingredient-listクラスの中に子要素として入れる
+  document.querySelector('.ingredient-list').appendChild(newFormContainer);
 }
 
 // 食材を追加ボタンを押すとフォームが追加
