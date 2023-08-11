@@ -1,3 +1,29 @@
+<!-- CSSファイルの読み込み -->
+<link rel="stylesheet" href="/recipe/show.css">
+
+<!-- ヘッダー部分 -->
+<header>
+  <div class="header-actions">
+    <div class="header-log">
+      <a><i class="fa-solid fa-utensils"></i></i><div class="logo-text">こんみる</div></a>
+    </div>
+    <!-- ログアウトリンク -->
+    <%= link_to logout_path, data: { turbo_method: :delete }, class:"header-link" do %>
+      <div class="link-icon"><i class="fa-solid fa-share-from-square"></i></div>
+      <div class="header-link-text">ログアウト</div>
+    <% end %>
+    <!-- ユーザー一覧ページ -->
+    <%= link_to users_all_path, class:"header-link" do %>
+      <div class="link-icon"><i class="fa-solid fa-users"></i></div>
+      <div class="header-link-text">レシピ一覧</div>
+    <% end %>
+    <!-- ホームページリンク -->
+    <%= link_to root_path, class:"header-link" do %>
+      <div class="link-icon"><i class="fa-solid fa-house"></i></div>
+      <div class="header-link-text">ホーム</div>
+    <% end %>
+</header>
+
 <!-- フラッシュメッセージ -->
 <% if flash[:notice] %>
   <div class="user-registration message">
@@ -5,33 +31,43 @@
   </div>
 <% end %>
 
-<h1>レシピ詳細ページ</h1>
+<main>
+  <!-- レシピの名前 -->
+  <h3 class="recipe-title"><%= @recipe.recipe_name %></h3>
+  
+  <!-- 投稿したレシピ画像が存在すればそれを表示し、存在しなければデフォルトの画像を表示 -->
+  <% if @recipe.recipe_image.attached? %>
+    <%= image_tag @recipe.recipe_image, size: '200x140', class: 'image' %>
+  <% else %>
+    <%= image_tag "no_image.png", size: '200x140' %>
+  <% end %>
+  
+  <!-- 食材リスト -->
+  <div class="ingredients-container">
+    <div class="ingredients-text">
+      <p class="ingredients-container-title">食材</p>
+      <% @recipe.ingredients.each do |ingredient| %>
+        <p class="ingredients"><%= ingredient.ingredient_name %></p>
+      <% end %>
+    </div>
+  </div>
 
-<div><%= link_to "トップページ", root_path %></div>
-
-<!-- レシピ編集ページ -->
-<div><%= link_to "レシピを編集する", edit_user_recipe_path %></div>
-
-<!-- レシピ削除ボタン -->
-<div><%= link_to "レシピを削除する", user_recipe_path(@recipe), data: { turbo_method: :delete, turbo_confirm: '本当に削除しますか？' } %></div>
-
-<!-- 投稿したレシピ画像が存在すればそれを表示し、存在しなければデフォルトの画像を表示 -->
-<% if @recipe.recipe_image.attached? %>
-  <%= image_tag @recipe.recipe_image, size: '300x200' %>
-<% else %>
-  <%= image_tag "no_image.png", size: '300x200' %>
-<% end %>
-
-<!-- レシピの名前 -->
-<p><strong>レシピ名:</strong> <%= @recipe.recipe_name %></p>
-
-<!-- レシピの調理過程 -->
-<p><strong>調理過程:</strong></p>
-<%= @recipe.recipe_process %>
-
-<!-- 食材リスト -->
-<p><strong>食材リスト</strong></p>
-<% @recipe.ingredients.each do |ingredient| %>
-  <%= ingredient.ingredient_name %><br>
-<% end %>
+  <!-- レシピの調理過程 -->
+  <div class="recipe-process">
+    <div class="recipe-process-text">
+      <p class="recipe-process-container-title">調理過程</p>
+      <%= @recipe.recipe_process %>
+    </div>
+  </div>
+  
+  <% if @current_user %>
+    <!-- レシピ編集ページ -->
+    <div><%= link_to "レシピを編集する", edit_user_recipe_path %></div>
+  
+    <!-- レシピ削除ボタン -->
+    <div>
+      <%= link_to "レシピを削除する", user_recipe_path(@recipe), data: { turbo_method: :delete, turbo_confirm: '本当に削除しますか？' } %>
+    </div>
+  <% end %>
+</main>
 

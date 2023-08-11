@@ -89,101 +89,52 @@ main {
   text-align: center;
 }
 
-.search-text {
-  color:#66450f;
-  font-size:0.8em;
-  font-weight:600;
-  margin-bottom:0.8em;
-}
-
-.announce-text {
+.recipe-title {
+  margin-bottom:0.4em;
   color:#fb914a;
-  font-size:0.8em;
-  font-weight:600;
-  margin-bottom:0.1em;
-  margin-top:0em;
 }
 
 .image {
   border-radius: 0.3em;
-  border: 0.2em solid #fb914a;
+  border: 0.1em solid #fb914a;
 }
 
-.image:hover {
-  border: 0.1em solid #eebe9d;
-}
-
-.recipe_name_field {
-  border: 0.2em solid  #fb914a;
-  border-radius: 0.4em;
-  width:180px;
-  height: 25px;
-  margin-top:0.2em;
-}
-
-.recipe_name_field:hover {
-  border: 0.2em solid#eebe9d;
-}
-
-/* 食材追加フォーム */
-.ingredient-addition {
-  margin: 1em 0;
-}
-
-.ingredient-list {
-  margin-bottom: 0.3em;
-}
-
-.ingredient-name-field {
+/* 食材リスト～ */
+.ingredients-container {
+  width:200px;
   margin: 0 auto;
+  background-color: white;
+  border: 1px solid rgb(9, 129, 9);
+  border-radius: 1em;
+}
+
+.ingredients-text {
+  margin:0.4em;
+}
+
+.ingredients-text {
   text-align: left;
-  width: 280px;
 }
 
-/* 既存のingredient-inputにのみスタイルを適用 */
-.ingredient-input[id^="ingredient_input_"] {
-  margin-left: 0em;
+.ingredients-container-title {
+  margin-top:0em;
+  margin-bottom:0.2em;
+  color: rgb(9, 129, 9);
+  font-weight: 600;
 }
 
-/* 既存のdelete-ingredient-buttonにのみスタイルを適用 */
-.delete-ingredient-button[data-ingredient-id] {
-  margin-left: 0em;
+.ingredients {
+  font-size:0.8em;
+  color:#444;
+  font-weight:600;
+  margin:0.2em 0em;
 }
 
-.add-ingredient-button {
-  background-color: rgb(9, 129, 9);
-  margin:0em 0em;
-  border: none;
-  border-radius: 0.4em;
-  color: white;
-  padding: 0.5em 1em;
-  cursor: pointer;
-  transition: background-color 0.3s;
-}
-
-.add-ingredient-button:hover {
-  background-color: rgb(118, 216, 118);
-}
-
-.ingredient-input {
-  width:150px;
-  border: 0.2em solid rgb(9, 129, 9);
-  border-radius: 0.4em;
-  padding: 0.2em 0.5em;
-  margin-left: 0.3em;
-  margin-bottom: 0.3em;
-}
-
-.delete-ingredient-button {
-  background-color: #eee;
-  border: none;
-  margin-left: 0.5em;
-  cursor: pointer;
-}
+/* ～食材リスト */
 
 .recipe-process {
   width:90%;
-  margin:0 auto;
+  margin:auto;
   border: 0.2em solid  #fb914a;
   border-radius: 0.4em;
   height: 7em;
