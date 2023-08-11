@@ -17,7 +17,7 @@
       <div class="link-icon"><i class="fa-solid fa-users"></i></div>
       <div class="header-link-text">レシピ一覧</div>
     <% end %>
-    <!-- プロフィール編集ページリンク -->
+    <!-- ホームページリンク -->
     <%= link_to root_path, class:"header-link" do %>
       <div class="link-icon"><i class="fa-solid fa-house"></i></div>
       <div class="header-link-text">ホーム</div>
@@ -53,7 +53,7 @@
 
   <!-- 検索結果のレシピ一覧 -->
   <div class="recipe-container">
-    <p class="container-title"><%= params[:ingredient_name] %>を使ったレシピ</p>
+    <p class="container-title"><%= params[:ingredient_name] %>を<br>使ったレシピ</p>
     <!-- 検索結果の食材リストが並ぶ -->
     <% if @recipes.any? %>
       <% @recipes.each do |recipe| %>

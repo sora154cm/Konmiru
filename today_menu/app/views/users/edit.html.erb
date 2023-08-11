@@ -1,35 +1,74 @@
-<h1>プロフィール編集ページ</h1>
+<!-- CSSファイルの読み込み -->
+<link rel="stylesheet" href="/user/edit.css">
 
-<!-- ユーザー名とユーザーの画像を表示 -->
-<div><%= link_to "トップページ", root_path %></div>
-
-<h4><%= link_to "ユーザー詳細ページ", user_path(@user) %></h4>
-
-<%= form_with(model: [@user], local: true, html: { multipart: true }, method: :patch) do |f| %>
-
-  <div>
-    <!-- プロフィール名を登録 -->
-    <%= f.text_field :user_name, placeholder: "ユーザー名を入力してください", value: @user.user_name.presence || "ユーザー(#{@user.id})" %>
-  </div>
-
-  <div>
-    <!-- profile_imageが存在すればそれを表示し、存在しなければデフォルトの画像を表示 -->
-    <% if @user.profile_image.attached? %>
-      <%= image_tag url_for(@user.profile_image), size: '300x200', class: 'image' %>
-    <% else %>
-      <%= image_tag "no_image.png", size: '300x200', class: 'image' %>
+<!-- ヘッダー部分 -->
+<header>
+  <div class="header-actions">
+    <div class="header-log">
+      <a><i class="fa-solid fa-utensils"></i></i><div class="logo-text">こんみる</div></a>
+    </div>
+    <!-- ログアウトリンク -->
+    <%= link_to logout_path, data: { turbo_method: :delete }, class:"header-link" do %>
+      <div class="link-icon"><i class="fa-solid fa-share-from-square"></i></div>
+      <div class="header-link-text">ログアウト</div>
     <% end %>
-    <!-- 上記の画像をクリックすると画像選択(CSSで普段は非表示) -->
-    <%= f.file_field :profile_image, id: 'recipe_image' %>
-    <!-- 仮メッセージ -->
-    <p>画像をクリックしてプロフィール写真をアップロード!</p>
+    <!-- ユーザー一覧ページ -->
+    <%= link_to users_all_path, class:"header-link" do %>
+      <div class="link-icon"><i class="fa-solid fa-users"></i></div>
+      <div class="header-link-text">レシピ一覧</div>
+    <% end %>
+    <!-- プロフィール編集ページリンク -->
+    <%= link_to root_path, class:"header-link" do %>
+      <div class="link-icon"><i class="fa-solid fa-house"></i></div>
+      <div class="header-link-text">ホーム</div>
+    <% end %>
+  
+    <!-- プロフィール写真 -->
+    <div class="profile-image">
+      <% if @current_user.profile_image.attached? %>
+        <%= image_tag @current_user.profile_image, size: '50x50' %>
+      <% else %>
+      <%= image_tag "no_image.png", size: '50x50' %>
+      <% end %>
+    </div>
   </div>
+    
+</header>
+<!-- ヘッダー部分終了 -->
 
-  <div>
-    <!-- Submit button -->
-    <%= f.submit "プロフィールを編集する", id: 'submit-button' %>
-  </div>
-<% end %>
+<main>
 
+  <p class="search-text">ユーザー名やプロフィール写真を変更して、<br>プロフィールをカスタマイズしましょう！</p>
+  
+  <%= form_with(model: [@user], local: true, html: { multipart: true }, method: :patch) do |f| %>
+    <div>
+      <p class="announce-text">画像を変更</p>
+      <!-- profile_imageが存在すればそれを表示し、存在しなければデフォルトの画像を表示 -->
+      <% if @user.profile_image.attached? %>
+        <%= image_tag url_for(@user.profile_image), size: '100x100', class: 'image' %>
+      <% else %>
+        <%= image_tag "no_image.png", size: '100x100', class: 'image' %>
+      <% end %>
+      <!-- 上記の画像をクリックすると画像選択(CSSで普段は非表示) -->
+      <%= f.file_field :profile_image, id: 'recipe_image' %>
+    </div>
 
+    <!-- プロフィール名を登録 -->
+    <%= f.text_field :user_name, placeholder: "名前を入力してください", value: @user.user_name.presence || "ユーザー(#{@user.id})", class: "profile-name-field" %>
+    </div>
+
+    <!-- プロフィール編集リンク -->
+    <%= link_to edit_user_path(@user), class: "edit-link" do  %>
+      <p><i class="fa-solid fa-rotate-right"></i></i>編集前に戻る</p>
+    <% end %>
+  
+    <div class="edit-btn">
+      <!-- Submit button -->
+      <%= f.submit "編集を完了する", id: 'submit-button', class: "edit btn" %>
+    </div>
+  <% end %>
+  
+</main>
+
+<!-- JavaScriptファイルの読み込み -->
 <script src="/user/user_edit.js"></script>

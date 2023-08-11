@@ -1,27 +1,71 @@
-<h1>ユーザー(レシピ)覧ページ</h2>
+<!-- CSSファイルの読み込み -->
+<link rel="stylesheet" href="/user/all.css">
 
-<div><%= link_to "トップページ", root_path %></div>
-
-<h2>レシピ一覧</h2>
-<% @all_recipe.each do |recipe| %>
-<div>
-  <!-- ユーザー名とユーザーの画像を表示 -->
-  <div>
-    <h4><%= link_to (recipe.user.user_name.presence || "ユーザー(#{recipe.user.id})"), user_path(recipe.user) %></h4>
-    <!-- ユーザーのプロフィール画像が存在すればそれを表示し、存在しなければデフォルトの画像を表示 -->
-    <% if recipe.user.profile_image.present? %>
-      <%= image_tag recipe.user.profile_image, size: '100x100' %>
-    <% else %>
-      <%= image_tag "no_image.png", size: '100x100' %>
+<!-- ヘッダー部分 -->
+<header>
+  <div class="header-actions">
+    <div class="header-log">
+      <a><i class="fa-solid fa-utensils"></i></i><div class="logo-text">こんみる</div></a>
+    </div>
+    <!-- ログアウトリンク -->
+    <%= link_to logout_path, data: { turbo_method: :delete }, class:"header-link" do %>
+      <div class="link-icon"><i class="fa-solid fa-share-from-square"></i></div>
+      <div class="header-link-text">ログアウト</div>
     <% end %>
+    <!-- ユーザー一覧ページ -->
+    <%= link_to users_all_path, class:"header-link" do %>
+      <div class="link-icon"><i class="fa-solid fa-users"></i></div>
+      <div class="header-link-text">レシピ一覧</div>
+    <% end %>
+    <!-- ホームページリンク -->
+    <%= link_to root_path, class:"header-link" do %>
+      <div class="link-icon"><i class="fa-solid fa-house"></i></div>
+      <div class="header-link-text">ホーム</div>
+    <% end %>
+  
+    <!-- プロフィール写真 -->
+    <div class="profile-image">
+      <% if @current_user.profile_image.attached? %>
+        <%= image_tag @current_user.profile_image, size: '50x50' %>
+      <% else %>
+      <%= image_tag "no_image.png", size: '50x50' %>
+      <% end %>
+    </div>
   </div>
+    
+</header>
+<!-- ヘッダー部分終了 -->
 
-  <h3><%= link_to recipe.recipe_name, user_recipe_path(recipe.user, recipe) %></h3>
-  <!-- 投稿したレシピ画像が存在すればそれを表示し、存在しなければデフォルトの画像を表示 -->
-  <% if recipe.recipe_image.attached? %>
-    <%= image_tag url_for(recipe.recipe_image), size: '300x200' %>
-  <% else %>
-    <%= image_tag "no_image.png", size: '300x200' %>
-  <% end %>
-</div>
-<% end %>
+<!-- メインコンテンツ～ -->
+<main>
+
+  <div class="recipe-container">
+    <!-- ユーザーのレシピ一覧 -->
+    <p class="container-title">みんなのレシピ</p>
+    <!-- 食材リストが並ぶ -->
+    <% @all_recipe.each do |recipe| %>
+      <div class="recipes">
+        <%= link_to user_recipe_path(recipe.user, recipe), class: "recipe-link" do %>
+          <!-- 投稿したレシピ画像が存在すればそれを表示し、存在しなければデフォルトの画像を表示 -->
+          <div class="recipe-image"> 
+            <% if recipe.recipe_image.attached? %>
+              <%= image_tag url_for(recipe.recipe_image), size: '200x140', class: "image" %>
+            <% else %>
+              <%= image_tag "no_image.png", size: '200x140', class: "image" %>
+            <% end %>
+          </div>
+          <div class="recipe-name"><%= recipe.recipe_name %></div>
+        <% end %>
+        <!-- byユーザー名 -->
+        <%= link_to user_path(recipe.user), class: "user-name" do %>
+          <div class="user-name-text">
+            <span class ="by-text">by</span><span><%= recipe.user.user_name.presence || "ユーザー(#{recipe.user.id})" %></span>
+          </div>
+        <% end %>
+      </div>
+    <% end %>
+    <!-- 食材リストここまで -->
+  </div>
+  
+</main>
+<!-- ～メインコンテンツ -->
