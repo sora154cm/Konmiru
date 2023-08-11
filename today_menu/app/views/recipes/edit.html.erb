@@ -57,7 +57,7 @@
     <!-- 既存の食材を表示・編集 -->
     <div class="ingredient-list">
       <% @recipe.ingredients.each_with_index do |ingredient, index| %>
-        <div id="ingredient_<%= ingredient.id %>">
+        <div id="ingredient_<%= ingredient.id %>" class="ingredient-name-field" >
           <label>食材(<%= index + 1 %>)</label>
           <%= text_field_tag 'ingredients[]', ingredient.ingredient_name, class: 'ingredient-input', id: "ingredient_input_#{ingredient.id}"  %>
           <!-- 削除ボタンを追加 -->

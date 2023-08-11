@@ -140,6 +140,16 @@ main {
   width: 280px;
 }
 
+/* 既存のingredient-inputにのみスタイルを適用 */
+.ingredient-input[id^="ingredient_input_"] {
+  margin-left: 0em;
+}
+
+/* 既存のdelete-ingredient-buttonにのみスタイルを適用 */
+.delete-ingredient-button[data-ingredient-id] {
+  margin-left: 0em;
+}
+
 .add-ingredient-button {
   background-color: rgb(9, 129, 9);
   margin:0em 0em;
