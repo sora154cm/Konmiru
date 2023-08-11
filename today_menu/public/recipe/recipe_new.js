@@ -3,13 +3,15 @@ function createNewIngredient(formCount) {
   // フォームを作成
   const newForm = document.createElement('input');
   newForm.type = 'text';
-  // s食材のname属性の追加
+  // 食材のname属性の追加
   newForm.name = 'ingredients[]';  
   // ingredient-inputクラスを付与
   newForm.classList.add('ingredient-input'); 
+  // プレースホルダーを追加
+  newForm.placeholder = "食材名を入力";
   // ラベルを作成
   const newLabel = document.createElement('label');
-  // label要素を食材():となるように定義
+  // label要素を食材()となるように定義
   newLabel.textContent = `食材(${formCount})`;
   // 新しい削除ボタンを作成
   const deleteButton = document.createElement('button');

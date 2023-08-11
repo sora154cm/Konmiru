@@ -42,7 +42,7 @@
   <!-- 検索フォーム -->
   <%= form_with(url: result_user_path(@current_user), method: "get", local: true, id: "ingredient_search_form") do %>
     <div class="search-container">
-      <%= text_field_tag :ingredient_name, nil, id: "ingredient_name", placeholder: "食材名を入れてください" %>
+      <%= text_field_tag :ingredient_name, nil, id: "ingredient_name", placeholder: "食材名を入力" %>
       <%= button_tag(type: 'submit') do %>
         <i class="fa-solid fa-magnifying-glass"></i>
       <% end %>

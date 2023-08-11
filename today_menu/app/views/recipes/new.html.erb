@@ -54,7 +54,7 @@
   
     <!-- レシピ名を登録 -->
     <div>
-      <%= f.text_field :recipe_name, placeholder: "料理名を入力してください", class: "recipe_name_field" %>
+      <%= f.text_field :recipe_name, placeholder: "料理名を入力", class: "recipe_name_field" %>
     </div>
   
     <!-- 食材を登録 -->
@@ -68,11 +68,11 @@
 
   
     <!-- 調理工程を登録 -->
-    <%= f.text_area :recipe_process, placeholder: "調理工程を入力してください" %>
+    <%= f.text_area :recipe_process, placeholder: "調理工程を入力", class: "recipe-process" %>
   
     <div>
       <!-- Submit button -->
-      <%= f.submit "レシピを登録する", id: 'submit-button' %>
+      <%= f.submit "レシピを登録する", id: 'submit-button', class: "recipe btn" %>
     </div>
   <% end %>
 </main>

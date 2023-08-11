@@ -33,7 +33,7 @@
       <a class="form-label">ログインID</a>
     </div>
     <div class="form-input-container">
-      <%= f.text_field :login_key, placeholder: "ログインIDを入力してください", class: "login-form" %>
+      <%= f.text_field :login_key, placeholder: "ログインIDを入力", class: "login-form" %>
       <!-- エラーメッセージ -->
       <% if @user.errors[:login_key].any? %>
         <div class="field_with_errors">
@@ -48,7 +48,7 @@
       <a class="form-label">パスワード</a>
     </div>
     <div class="form-input-container">
-      <%= f.password_field :password, placeholder: "パスワードを入力してください", class: "password-form" %>
+      <%= f.password_field :password, placeholder: "パスワードを入力", class: "password-form" %>
       <!-- エラーメッセージ -->
       <% if @user.errors[:password].any? %>
         <div class="field_with_errors">
