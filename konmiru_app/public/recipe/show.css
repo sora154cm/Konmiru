@@ -10,6 +10,8 @@ header {
   height: 70px;
   background-color: white;
   border-bottom:1px solid rgb(9, 129, 9);
+  display: flex;          
+  align-items: center;
 }
 
 .header-actions {
@@ -84,7 +86,7 @@ header {
 
 /* メイン部分 */
 main {
-  width:80%;
+  width:90%;
   margin:0 auto;
   text-align: center;
 }
@@ -192,4 +194,71 @@ main {
 .recipe-delete:hover {
   background-color: #b46b67;
 }
+
+@media (min-width: 768px) {
+  body {
+      font-size: 18px; /* 文字のサイズを大きくする */
+  }
+
+  header {
+      height: 80px; /* ヘッダーの高さを少し大きく */
+  }
+
+  .header-actions {
+      height: 80px; /* headerの高さに合わせて調整 */
+      padding: 0 20px; /* 左右の余白を追加 */
+  }
+
+  .fa-utensils,
+  .link-icon {
+      font-size: 2em; /* アイコンのサイズを大きく */
+  }
+
+  .logo-text {
+      font-size: 1.2em; /* ロゴテキストのサイズを大きく */
+  }
+
+  .header-link-text {
+      font-size: 0.8em; /* リンクテキストのサイズを大きく */
+  }
+
+  main {
+      width: 70%; /* メインコンテンツの幅を少し狭く */
+  }
+
+  .recipe-title {
+      font-size: 2em; /* レシピタイトルのサイズを大きく */
+  }
+
+  .image {
+      max-width: 400px; /* 画像の最大幅を大きく */
+      max-height: 280px;
+  }
+
+  .ingredients-container {
+      width: 60%; /* 食材リストのコンテナの幅を大きく */
+      max-width: 500px; /* 最大幅も指定 */
+      text-align: left; /* 左寄せに変更 */
+      padding: 20px; /* 内側の余白を追加 */
+  }
+
+  .recipe-process {
+      margin-top: 2em; /* 上の余白を大きく */
+      padding: 20px; /* 内側の余白を追加 */
+  }
+
+  .recipe-edit {
+    line-height:50px;
+  }
+
+  .recipe-delete {
+    line-height:50px;
+  }
+
+  .btn {
+      width: 250px; /* ボタンの幅を大きく */
+      height: 50px; /* ボタンの高さも大きく */
+  }
+}
+
 

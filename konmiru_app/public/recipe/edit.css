@@ -10,6 +10,8 @@ header {
   height: 70px;
   background-color: white;
   border-bottom:1px solid rgb(9, 129, 9);
+  display: flex;          
+  align-items: center;
 }
 
 .header-actions {
@@ -84,7 +86,7 @@ header {
 
 /* メイン部分 */
 main {
-  width:80%;
+  width:90%;
   margin:0 auto;
   text-align: center;
 }
@@ -98,10 +100,10 @@ main {
 
 .announce-text {
   color:#fb914a;
-  font-size:0.8em;
+  font-size:1em;
   font-weight:600;
   margin-bottom:0.1em;
-  margin-top:0em;
+  margin-top:1em;
 }
 
 .image {
@@ -116,8 +118,8 @@ main {
 .recipe_name_field {
   border: 0.2em solid  #fb914a;
   border-radius: 0.4em;
-  width:180px;
-  height: 25px;
+  width:60%;
+  height: 2em;
   margin-top:0.2em;
 }
 
@@ -151,12 +153,13 @@ main {
 }
 
 .add-ingredient-button {
+  font-weight: 600;
   background-color: rgb(9, 129, 9);
   margin:0em 0em;
   border: none;
   border-radius: 0.4em;
   color: white;
-  padding: 0.5em 1em;
+  padding: 0.8em 1.4em;
   cursor: pointer;
   transition: background-color 0.3s;
 }
@@ -203,8 +206,8 @@ main {
 
 .btn {
   display: inline-block;
-  width: 150px; 
-  height: 30px; 
+  width: 60%; 
+  height: 3em; 
   box-shadow: 0px 2px #524b42;
   border-radius: 5px;
   position: relative;
@@ -214,4 +217,77 @@ main {
   /*ボタンを押したとき*/
   top: 2px;
   box-shadow: none;
+}
+
+@media (min-width: 768px) {
+
+  /* ヘッダー部分の変更 */
+  header {
+    height: 90px;
+  }
+
+  .header-actions {
+    height: 90px;
+  }
+
+  .fa-utensils {
+    font-size: 2em;
+  }
+
+  .logo-text {
+    font-size: 1em;
+  }
+
+  .header-link-text {
+    font-size: 0.8em;
+  }
+
+  /* メイン部分の変更 */
+  main {
+    width: 70%;
+  }
+
+  .search-text {
+    font-size: 1.2em;
+    margin-bottom: 1em;
+  }
+
+  .announce-text {
+    font-size: 1.4em;
+    margin-bottom: 0.3em;
+  }
+
+  .image {
+    border-radius: 0.5em;
+    border: 0.3em solid #fb914a;
+  }
+
+  .recipe_name_field {
+    width: 70%;
+    height: 2.5em;
+    margin-top: 0.5em;
+  }
+
+  .add-ingredient-button {
+    padding: 1em 2em;
+  }
+
+  .ingredient-name-field {
+    width: 400px;
+  } 
+
+  .ingredient-input {
+    width: 250px;
+    padding: 0.3em 0.8em;
+  }
+
+  .recipe-process {
+    width: 80%;
+    height: 10em;
+  }
+
+  .btn {
+    width: 50%;
+    height: 4em;
+  }
 }

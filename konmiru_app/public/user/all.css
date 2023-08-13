@@ -10,6 +10,8 @@ header {
   height: 70px;
   background-color: white;
   border-bottom:1px solid rgb(9, 129, 9);
+  display: flex;          
+  align-items: center;
 }
 
 .header-actions {
@@ -84,7 +86,7 @@ header {
 
 /* メイン部分 */
 main {
-  width:80%;
+  width:90%;
   margin:0 auto;
   text-align: center;
 }
@@ -97,13 +99,14 @@ main {
   padding-top:0.3em;
   margin-top:1.2em;
   background-color: white;
-  border: 2px solid #444;
+  border: 2px solid rgb(9, 129, 9);
   border-radius: 4px;
 }
 
 .container-title{
   margin-top: 0px;
-  color:#444;
+  margin-bottom:0.1em;
+  color:rgb(9, 129, 9);
   font-weight: 600;
   font-size:1.2em;
 }
@@ -113,7 +116,7 @@ main {
 }
 
 .recipes {
-  border-top:1px solid #bfbebe;
+  border-top:1px solid rgb(210, 245, 220);
   padding:0.4em 0.1em;
 }
 
@@ -150,4 +153,37 @@ main {
 
 .user-name-text:hover {
   color:rgb(118, 216, 118);
+}
+
+/* タブレット以上のサイズに適用 */
+@media (min-width: 768px) {
+
+  body {
+    font-size: 18px;
+  }
+
+  header {
+    height: 100px;
+  }
+
+  .header-actions {
+    padding: 0 5%;
+  }
+
+  .fa-utensils,
+  .link-icon {
+    font-size: 2em;
+  }
+
+  .logo-text {
+    font-size: 1.2em;
+  }
+
+  .header-link-text {
+    font-size: 0.9em;
+  }
+
+  main {
+    width: 80%;
+  }
 }

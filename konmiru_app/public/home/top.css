@@ -11,6 +11,8 @@ header {
   height: 70px;
   background-color: white;
   border-bottom:1px solid rgb(9, 129, 9);
+  display: flex;          
+  align-items: center;
 }
 
 /* ヘッダー内のアクション（ロゴやキャッチコピー）を配置するコンテナ */
@@ -18,7 +20,7 @@ header {
   height: 70px;
   display: flex;
   align-items: center; 
-  justify-content: center; /* 子要素を中央寄せするための追加 */
+  justify-content: center; /* 子要素を中央寄せ */
   width: 100%; 
   margin: 0 auto;
 }
@@ -130,4 +132,61 @@ main {
 
 .entrance-icon:hover {
   background-color: #f3a876;
+}
+
+
+/* タブレット以上の画面幅に対応するスタイル */
+@media (min-width: 768px) {
+  
+  /* タブレット以上の画面幅用のスタイルを記述 */
+
+  /* 全体のコンテンツの幅を最大1200pxに制限 */
+  main {
+    max-width: 1200px;
+  }
+
+  /* ヘッダーの高さや文字サイズを大きくする */
+  header {
+    height: 90px;
+  }
+  
+  .header-log {
+    font-size: 1.4em;
+  }
+
+  .fa-utensils {
+    font-size: 2em;
+  }
+
+  .logo-text {
+    font-size: 1em;
+  }
+
+  .app-image {
+    width:50%;
+  }
+
+  .concept-message {
+    font-size: 1.5em;
+  }
+
+  /* 使い方ガイドのスタイル調整 */
+  .usage-guide h3 {
+    font-size: 1.6em;
+  }
+
+  .usage-guide ol {
+    font-size: 1.1em;
+  }
+
+  /* ボタンサイズ調整 */
+  .btn {
+    width: 60%;
+    height: 4em;
+  }
+
+  .entrance-icon {
+    font-size: 1.2em;
+    line-height: 4em;
+  }
 }

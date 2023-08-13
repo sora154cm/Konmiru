@@ -10,6 +10,8 @@ header {
   height: 70px;
   background-color: white;
   border-bottom:1px solid rgb(9, 129, 9);
+  display: flex;          
+  align-items: center;
 }
 
 .header-actions {
@@ -84,21 +86,21 @@ header {
 
 /* メイン部分 */
 main {
-  width:80%;
+  width:90%;
   margin:0 auto;
   text-align: center;
 }
 
 .search-text {
   color:#66450f;
-  font-size:0.8em;
+  font-size:0.9em;
   font-weight:600;
   margin-bottom:0.8em;
 }
 
 .announce-text {
   color:#fb914a;
-  font-size:0.8em;
+  font-size:1em;
   font-weight:600;
   margin-bottom:0.1em;
   margin-top:0em;
@@ -107,8 +109,8 @@ main {
 .profile-name-field {
   border: 0.2em solid #fb914a;
   border-radius: 0.4em;
-  width:200px;
-  height: 25px;
+  width:70%;
+  height: 2em;
   margin-top:0.2em;
 }
 
@@ -134,6 +136,7 @@ main {
   color:white;
   font-weight: 600;
   border: 1px solid #fb914a;
+  font-size:1em;
 }
 
 .edit:hover {
@@ -141,10 +144,25 @@ main {
   color:white;
 }
 
+.edit-link {
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 1.2em;
+  color:rgb(9, 129, 9);
+}
+
+.edit-link p {
+  margin-bottom:0.5em;
+}
+
+.edit-link:hover {
+  color:rgb(118, 216, 118);
+}
+
 .btn {
   display: inline-block;
-  width: 120px; 
-  height: 30px; 
+  width: 60%; 
+  height: 3em; 
   box-shadow: 0px 2px #524b42;
   border-radius: 5px;
   position: relative;
@@ -156,17 +174,73 @@ main {
   box-shadow: none;
 }
 
-.edit-link {
-  text-decoration: none;
-  font-weight: 600;
-  font-size: 1em;
-  color:rgb(9, 129, 9);
-}
-
-.edit-link:hover {
-  color:rgb(118, 216, 118);
-}
-
 .fa-rotate-right {
   margin-right:0.2em;
+}
+
+/* タブレット画面幅以上のCSS */
+@media (min-width: 768px) {
+
+  header {
+    height: 90px;
+  }
+
+  .header-actions {
+    height: 90px;
+  }
+
+  .header-log .fa-utensils {
+    font-size: 2em;
+  }
+
+  .header-log .logo-text {
+    font-size: 1.2em;
+  }
+
+  .link-icon {
+    font-size: 2em;
+  }
+
+  .header-link-text {
+    font-size: 0.8em;
+  }
+
+  main {
+    width: 80%;
+  }
+
+  .search-text {
+    font-size: 1.2em;
+    margin-bottom: 1em;
+  }
+
+  .announce-text {
+    font-size: 1.4em;
+    margin-bottom: 0.2em;
+  }
+
+  .profile-name-field {
+    width: 60%;
+    font-size: 1.2em;
+  }
+
+  .image {
+    border-width: 0.3em;
+  }
+
+  .edit-btn {
+    margin-top: 1em;
+  }
+
+  .edit {
+    font-size: 1.2em;
+  }
+
+  .edit-link {
+    font-size: 1.4em;
+  }
+
+  .edit-link p {
+    margin-bottom: 1em;
+  }
 }

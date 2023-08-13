@@ -10,6 +10,8 @@ header {
   height: 70px;
   background-color: white;
   border-bottom:1px solid rgb(9, 129, 9);
+  display: flex;          
+  align-items: center;
 }
 
 .header-actions {
@@ -84,14 +86,14 @@ header {
 
 /* メイン部分 */
 main {
-  width:80%;
+  width:90%;
   margin:0 auto;
   text-align: center;
 }
 
 .search-text {
   color:#66450f;
-  font-size:0.8em;
+  font-size:1em;
   font-weight:600;
   margin-bottom:0.1em;
 }
@@ -103,8 +105,8 @@ main {
 }
 
 #ingredient_name {
-  width:200px;
-  height: 25px;
+  width:80%;
+  height: 2em;
   padding-right: 30px;  
   transition: padding-right 0.3s;  /* オプション：スムーズな変更のためのアニメーション */
   /* z-indexを効かせるためにはpositionを指定 */
@@ -164,7 +166,7 @@ button {
 
 .registration {
   text-decoration: none;
-  margin-top:1em;
+  margin-top:0.5em;
   color:white;
   font-size:14px;
   font-weight: 600;
@@ -184,13 +186,14 @@ button {
   padding-top:0.3em;
   margin-top:1.2em;
   background-color: white;
-  border: 2px solid #444;
+  border: 2px solid rgb(9, 129, 9);
   border-radius: 4px;
 }
 
 .container-title{
   margin-top: 0px;
-  color:#444;
+  margin-bottom:0.1em;
+  color:rgb(9, 129, 9);
   font-weight: 600;
   font-size:1.2em;
 }
@@ -200,7 +203,7 @@ button {
 }
 
 .recipes {
-  border-top:1px solid #bfbebe;
+  border-top:1px solid rgb(210, 245, 220);
   padding:0.4em 0.1em;
 }
 
@@ -217,3 +220,82 @@ button {
   font-size:1em;
   font-weight:500;
 }
+
+/* タブレット以上のサイズに適用 */
+@media (min-width: 768px) {
+
+  body {
+    font-size: 18px;
+  }
+
+  header {
+    height: 100px;
+  }
+
+  .header-actions {
+    padding: 0 5%;
+  }
+
+  .fa-utensils,
+  .link-icon {
+    font-size: 2em;
+  }
+
+  .logo-text {
+    font-size: 1.2em;
+  }
+
+  .header-link-text {
+    font-size: 0.9em;
+  }
+
+  main {
+    width: 80%;
+  }
+
+  .search-container {
+    width: 350px;  
+  }
+
+  #ingredient_name {
+    padding-right: 80px;  
+  }
+
+  button {
+    right: 10px;  
+  }
+
+  .search-text,
+  .announce-text {
+    font-size: 1.4em;
+    margin-bottom: 0.5em;
+  }
+
+  #ingredient_name {
+    width: 70%;
+    height: 2.5em;
+  }
+
+  .btn {
+    width: 250px;
+    height: 50px;
+  }
+
+  .registration {
+    font-size: 18px;
+    line-height:50px;
+  }
+
+  .recipe-container {
+    width: 85%;
+  }
+
+  .container-title {
+    font-size: 1.6em;
+  }
+
+  .recipe-name {
+    font-size: 1.4em;
+  }
+}
+

@@ -24,13 +24,6 @@
     <% end %>
 </header>
 
-<!-- フラッシュメッセージ -->
-<% if flash[:notice] %>
-  <div class="user-registration message">
-    <%= flash[:notice] %>
-  </div>
-<% end %>
-
 <main>
   <!-- レシピの名前 -->
   <h3 class="recipe-title"><%= @recipe.recipe_name %></h3>
