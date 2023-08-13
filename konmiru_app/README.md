@@ -1,5 +1,5 @@
 # こんみる
-![アプリ紹介](public/README/app-image.png)
+<img src="public/README/app-image.png" alt="アプリ紹介" width="250">
 
 ## アプリ概要
 **献立アプリ「こんみる」**  
