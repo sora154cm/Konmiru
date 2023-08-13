@@ -29,7 +29,7 @@ class UsersController < ApplicationController
       # ユーザー登録後、そのユーザーをログイン状態にする
       session[:user_id] = @user.id  
       flash[:notice] = "ユーザー登録が完了しました! あなたのIDは #{@user.login_key} です。"
-      redirect_to root_path
+      redirect_to index_path
     else
       render :new, status: :unprocessable_entity
     end

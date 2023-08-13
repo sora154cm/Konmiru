@@ -1,7 +1,7 @@
 class HomesController < ApplicationController
 
-  # ページにアクセスする前にauthenticate_userを実行
-  before_action :authenticate_user
+  # ページにアクセスする前にauthenticate_userを実行(indexアクションのみ指定)
+  before_action :authenticate_user, only: [:index]
 
   # ログインしていなかったらログイン画面にリダイレクトする
   def authenticate_user
@@ -11,12 +11,15 @@ class HomesController < ApplicationController
     end
   end
 
-  def top
+  def index
     @users =User.all
-    @user = 
     # N+1問題を解消
     @current_user.recipes = @current_user.recipes.with_attached_recipe_image
     @recipe = Recipe.first
+  end
+
+  def top
+    
   end
   
 end

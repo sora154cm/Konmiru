@@ -7,81 +7,30 @@
     <div class="header-log">
       <a><i class="fa-solid fa-utensils"></i></i><div class="logo-text">こんみる</div></a>
     </div>
-    <!-- ログアウトリンク -->
-    <%= link_to logout_path, data: { turbo_method: :delete }, class:"header-link" do %>
-      <div class="link-icon"><i class="fa-solid fa-share-from-square"></i></div>
-      <div class="header-link-text">ログアウト</div>
-    <% end %>
-    <!-- ユーザー一覧ページ -->
-    <%= link_to users_all_path, class:"header-link" do %>
-      <div class="link-icon"><i class="fa-solid fa-users"></i></div>
-      <div class="header-link-text">レシピ一覧</div>
-    <% end %>
-    <!-- プロフィール編集ページリンク -->
-    <%= link_to edit_user_path(@current_user), class:"header-link" do %>
-      <div class="link-icon"><i class="fa-solid fa-user-gear"></i></div>
-      <div class="header-link-text">編集</div>
-    <% end %>
-  
-    <!-- プロフィール写真 -->
-    <div class="profile-image">
-      <% if @current_user.profile_image.attached? %>
-        <%= image_tag @current_user.profile_image, size: '50x50' %>
-      <% else %>
-      <%= image_tag "no_image.png", size: '50x50' %>
-      <% end %>
+    <div class="concept-message">
+      <a>毎日の献立、もう悩まない</a>
     </div>
   </div>
-    
 </header>
-<!-- ヘッダー部分終了 -->
 
-<!-- メインコンテンツ～ -->
+<!-- コンテンツ部分 -->
 <main>
-  <p class="search-text">食材を入力して登録したレシピを検索</p>
-  <!-- 検索フォーム -->
-  <%= form_with(url: result_user_path(@current_user), method: "get", local: true, id: "ingredient_search_form") do %>
-    <div class="search-container">
-      <%= text_field_tag :ingredient_name, nil, id: "ingredient_name", placeholder: "食材名を入力" %>
-      <%= button_tag(type: 'submit') do %>
-        <i class="fa-solid fa-magnifying-glass"></i>
-      <% end %>
-    </div>
-  <% end %>
 
-  <p class="announce-text">レシピ登録はこちらから</p>
-  <!-- レシピ登録ページリンク -->
-  <div><%= link_to "レシピを登録する", new_user_recipe_path(@current_user), class: "registration btn" %></div>
-  
-  <div class="recipe-container">
-    <!-- ユーザーのレシピ一覧 -->
-    <p class="container-title">あなたのレシピ</p>
-    <!-- 食材リストが並ぶ -->
-    <% @current_user.recipes.each do |recipe| %>
-      <div class="recipes">
-        <%= link_to user_recipe_path(recipe.user, recipe), class: "recipe-link" do %>
-          <!-- 投稿したレシピ画像が存在すればそれを表示し、存在しなければデフォルトの画像を表示 -->
-          <div class="recipe-image"> 
-            <% if recipe.recipe_image.attached? %>
-              <%= image_tag url_for(recipe.recipe_image), size: '200x140', class: "image" %>
-            <% else %>
-              <%= image_tag "no_image.png", size: '200x140', class: "image" %>
-            <% end %>
-          </div>
-          <div class="recipe-name"><%= recipe.recipe_name %></div>
-        <% end %>
-      </div>
-    <% end %>
-    <!-- 食材リストここまで -->
+  <div class="konmiru-image">
+    <%= image_tag "konmiru_image.png", class: "app-image" %>
+  </div>
 
+  <div class="usage-guide">
+  <h3>主な使い方</h3>
+    <ol>
+      <li>まずはレシピを登録</li>
+      <li>料理に使いたい食材を検索</li>
+      <li>登録したレシピの中から検索に<br>かけた食材を使ったレシピを表示</li>
+    </ol>
+  </div>
+
+  <div class="entrance">
+    <%= link_to "さっそく始める", login_path, class: "entrance-icon btn" %>
   </div>
   
 </main>
-<!-- ～メインコンテンツ -->
-
-<!-- JavaScriptファイルの読み込み -->
-<script src="/home/home.js"></script>
-
-
-
-

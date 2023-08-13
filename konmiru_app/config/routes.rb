@@ -1,6 +1,11 @@
 Rails.application.routes.draw do
-  #トップページ
+  
+  # 一番最初のページ
   root 'homes#top'
+  # ホームページ
+  get '/index', to: 'homes#index'
+  
+  
   
   # 新規登録関連のルーティング
   get '/signup', to: 'users#new'

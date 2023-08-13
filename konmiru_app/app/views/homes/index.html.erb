@@ -1,5 +1,5 @@
 <!-- CSSファイルの読み込み -->
-<link rel="stylesheet" href="/user/all.css">
+<link rel="stylesheet" href="/home/index.css">
 
 <!-- ヘッダー部分 -->
 <header>
@@ -17,10 +17,10 @@
       <div class="link-icon"><i class="fa-solid fa-users"></i></div>
       <div class="header-link-text">レシピ一覧</div>
     <% end %>
-    <!-- ホームページリンク -->
-    <%= link_to index_path, class:"header-link" do %>
-      <div class="link-icon"><i class="fa-solid fa-house"></i></div>
-      <div class="header-link-text">ホーム</div>
+    <!-- プロフィール編集ページリンク -->
+    <%= link_to edit_user_path(@current_user), class:"header-link" do %>
+      <div class="link-icon"><i class="fa-solid fa-user-gear"></i></div>
+      <div class="header-link-text">編集</div>
     <% end %>
   
     <!-- プロフィール写真 -->
@@ -38,12 +38,26 @@
 
 <!-- メインコンテンツ～ -->
 <main>
+  <p class="search-text">食材を入力して登録したレシピを検索</p>
+  <!-- 検索フォーム -->
+  <%= form_with(url: result_user_path(@current_user), method: "get", local: true, id: "ingredient_search_form") do %>
+    <div class="search-container">
+      <%= text_field_tag :ingredient_name, nil, id: "ingredient_name", placeholder: "食材名を入力" %>
+      <%= button_tag(type: 'submit') do %>
+        <i class="fa-solid fa-magnifying-glass"></i>
+      <% end %>
+    </div>
+  <% end %>
 
+  <p class="announce-text">レシピ登録はこちらから</p>
+  <!-- レシピ登録ページリンク -->
+  <div><%= link_to "レシピを登録する", new_user_recipe_path(@current_user), class: "registration btn" %></div>
+  
   <div class="recipe-container">
     <!-- ユーザーのレシピ一覧 -->
-    <p class="container-title">みんなのレシピ</p>
+    <p class="container-title">あなたのレシピ</p>
     <!-- 食材リストが並ぶ -->
-    <% @all_recipe.each do |recipe| %>
+    <% @current_user.recipes.each do |recipe| %>
       <div class="recipes">
         <%= link_to user_recipe_path(recipe.user, recipe), class: "recipe-link" do %>
           <!-- 投稿したレシピ画像が存在すればそれを表示し、存在しなければデフォルトの画像を表示 -->
@@ -56,16 +70,14 @@
           </div>
           <div class="recipe-name"><%= recipe.recipe_name %></div>
         <% end %>
-        <!-- byユーザー名 -->
-        <%= link_to user_path(recipe.user), class: "user-name" do %>
-          <div class="user-name-text">
-            <span class ="by-text">by</span><span><%= recipe.user.user_name.presence || "ユーザー(#{recipe.user.id})" %></span>
-          </div>
-        <% end %>
       </div>
     <% end %>
     <!-- 食材リストここまで -->
+
   </div>
   
 </main>
 <!-- ～メインコンテンツ -->
+
+<!-- JavaScriptファイルの読み込み -->
+<script src="/home/index.js"></script>

@@ -13,7 +13,7 @@ class SessionsController < ApplicationController
       if @user.authenticate(params[:password])
         session[:user_id] = @user.id
         flash[:notice] = "ログインができました!"
-        redirect_to root_path
+        redirect_to index_path
         return
       else
         # パスワードが間違っている場合のエラーメッセージ
@@ -34,6 +34,6 @@ class SessionsController < ApplicationController
     # ログインユーザーのセッションを解除
     session.delete(:user_id)
     flash[:notice] = "ログアウトしました！"
-    redirect_to login_path
+    redirect_to index_path
   end
 end

@@ -38,7 +38,7 @@ class RecipesController < ApplicationController
     @recipe.recipe_ingredients.destroy_all
     @recipe.destroy
     flash[:notice] = "レシピの削除が完了しました!"
-    redirect_to root_path
+    redirect_to index_path
   end
 
   def show
