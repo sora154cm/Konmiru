@@ -1,0 +1,37 @@
+@startuml
+
+entity "users" {
+  *user_id
+  ---
+  -login_key
+  -password_digest
+  -user_name
+  -profile_image
+}
+
+entity "recipes" {
+  *recipe_id
+  ---
+  *user_id <<FK>>
+  -recipe_name
+  -recipe_image
+}
+
+entity "ingredients" {
+  *ingredient_id
+  ---
+  -ingredient_name
+}
+
+entity "recipe_ingredients" {
+  *recipe_ingredient_id
+  ---
+  *recipe_id <<FK>>
+  *ingredient_id <<FK>>
+}
+
+"users" ||--o{ "recipes" 
+"recipes" }o--|| "recipe_ingredients" 
+"ingredients" }o--|| "recipe_ingredients" 
+
+@enduml
