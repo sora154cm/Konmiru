@@ -69,3 +69,8 @@
   
 </main>
 <!-- ～メインコンテンツ -->
+
+<!-- JavaScriptファイルの読み込み -->
+<% content_for :js do %>
+  <%= javascript_import_module_tag "home/index_top" %>
+<% end %>
