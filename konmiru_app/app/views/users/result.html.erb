@@ -79,4 +79,6 @@
 </main>
 
 <!-- JavaScriptファイルの読み込み -->
-<script src="/home/home.js"></script>
+<% content_for :js do %>
+  <%= javascript_import_module_tag "home/index" %>
+<% end %>

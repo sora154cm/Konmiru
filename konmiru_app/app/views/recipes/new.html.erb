@@ -78,7 +78,9 @@
 </main>
 
 <!-- JavaScriptファイルの読み込み -->
-<script src="/recipe/recipe_new.js"></script>
+<% content_for :js do %>
+  <%= javascript_import_module_tag "recipe/recipe_new" %>
+<% end %>
 
 
 

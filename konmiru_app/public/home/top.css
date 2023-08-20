@@ -100,7 +100,6 @@ main {
   color: #555;                  
 }
 
-
 .btn {
   display: inline-block;
   width: 70%; 
@@ -177,6 +176,20 @@ main {
 
   .usage-guide ol {
     font-size: 1.1em;
+  }
+
+  .usage-guide li {
+    text-align: center;
+  }
+
+  /* <br> タグを無視する */
+  .usage-guide li br {
+    display: none;
+  }
+
+  /* 番号をなくす */
+  .usage-guide ol {
+    list-style-type: none;
   }
 
   /* ボタンサイズ調整 */

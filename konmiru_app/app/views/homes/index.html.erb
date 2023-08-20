@@ -80,4 +80,6 @@
 <!-- ～メインコンテンツ -->
 
 <!-- JavaScriptファイルの読み込み -->
-<script src="/home/index.js"></script>
+<% content_for :js do %>
+  <%= javascript_import_module_tag "home/index" %>
+<% end %>
