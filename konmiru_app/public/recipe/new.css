@@ -119,7 +119,7 @@ main {
   border: 0.2em solid  #fb914a;
   border-radius: 0.4em;
   width:60%;
-  height: 2em;
+  height: 2.5em;
   margin-top:0.2em;
 }
 
@@ -253,7 +253,7 @@ main {
 
   .recipe_name_field {
     width: 70%;
-    height: 2.5em;
+    height: 3em;
     margin-top: 0.5em;
   }
 

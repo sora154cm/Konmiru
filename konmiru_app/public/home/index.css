@@ -106,7 +106,7 @@ main {
 
 #ingredient_name {
   width:80%;
-  height: 2em;
+  height: 3em;
   padding-right: 30px;  
   transition: padding-right 0.3s;  /* オプション：スムーズな変更のためのアニメーション */
   /* z-indexを効かせるためにはpositionを指定 */
@@ -198,6 +198,11 @@ button {
   font-size:1.2em;
 }
 
+.recipe-no-result {
+  font-weight: 600;
+  color:#66450f;
+}
+
 .recipe-link {
   text-decoration: none;
 }
@@ -259,6 +264,8 @@ button {
 
   #ingredient_name {
     padding-right: 80px;  
+    width: 70%;
+    height: 4em;
   }
 
   button {
@@ -269,11 +276,6 @@ button {
   .announce-text {
     font-size: 1.4em;
     margin-bottom: 0.5em;
-  }
-
-  #ingredient_name {
-    width: 70%;
-    height: 2.5em;
   }
 
   .btn {

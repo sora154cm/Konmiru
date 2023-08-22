@@ -48,7 +48,6 @@ class UsersController < ApplicationController
       @recipes = @ingredient.recipes.includes(:user, :recipe_image_attachment)
     else
       @recipes = []
-      flash[:alert] = "該当する食材が見つかりませんでした"
     end
   end
 
@@ -64,7 +63,6 @@ class UsersController < ApplicationController
       @ingredient = @recipes.first.recipe_ingredients.first.ingredient
     else
       @recipes = []
-      flash[:alert] = "該当する食材が見つかりませんでした"
     end
 end
 
