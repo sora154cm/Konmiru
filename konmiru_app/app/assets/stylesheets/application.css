@@ -2,30 +2,6 @@
   box-sizing: border-box;
 }
 
-.user-registration {
-  color:white;
-  background-color: rgb(228, 128, 14);
-  border-radius: 10%;
-  border-radius: 15px;
-  width: 50%;
-  height: 60px;
-  line-height: 60px;
-  margin: 0 auto;
-}
-
-.user-alert {
-  color:white;
-  background-color: rgb(228, 57, 14);
-  border-radius: 10%;
-  border-radius: 15px;
-  width: 50%;
-  height: 40px;
-  line-height: 40px;
-  margin: 0 auto;
-  margin-top:3px;
-  margin-bottom:3px;
-}
-
 .message {
   text-align: center;
 }
