@@ -43,8 +43,6 @@ gem "bootsnap", require: false
 
 gem "rails-i18n"
 
-gem 'jquery-rails'
-
 # Use Sass to process CSS
 # gem "sassc-rails"
 

@@ -1,9 +1,5 @@
-// Configure your import map in config/importmap.rb. Read more: https://github.com/rails/importmap-rails
-import "@hotwired/turbo-rails"
-import "controllers"
-
 document.addEventListener("turbo:load", function() {
-  // ～～画像選択に伴う処理開始～～
+  // ~画像選択に伴う処理開始~
   // .imageクラスを持つすべての要素を選択
   let imageElems = document.querySelectorAll('.image');
   // 選択した各.image要素に対して処理
@@ -41,5 +37,21 @@ document.addEventListener("turbo:load", function() {
       reader.readAsDataURL(event.target.files[0]);
     });
   };
-  // ～～画像選択に伴う処理終了～～
+  // ~画像選択に伴う処理終了~
+
+  // Submitボタンの取得
+  const submitButton = document.getElementById('submit-button');
+
+  submitButton.addEventListener('click', function(e) {
+    // ユーザー名のinputフィールドを取得
+    const userNameField = document.querySelector('.profile-name-field');
+    // ユーザー名が空かどうかチェック
+    if (userNameField.value.trim() === "") {
+        // デフォルトのsubmit動作を停止
+        e.preventDefault();
+        // アラートを表示
+        alert('ユーザー名を入力してください');
+    }
+  });
+
 });

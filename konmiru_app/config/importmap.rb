@@ -9,3 +9,4 @@ pin "home/index_top"
 pin "recipe/edit"
 pin "recipe/new"
 pin "user/user_edit"
+

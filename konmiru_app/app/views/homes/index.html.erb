@@ -18,7 +18,7 @@
       <div class="header-link-text">レシピ一覧</div>
     <% end %>
     <!-- プロフィール編集ページリンク -->
-    <%= link_to edit_user_path(@current_user), class:"header-link" do %>
+    <%= link_to edit_user_path(@current_user), class:"header-link", data: { turbo: false } do %>
       <div class="link-icon"><i class="fa-solid fa-user-gear"></i></div>
       <div class="header-link-text">編集</div>
     <% end %>
@@ -51,7 +51,7 @@
 
   <p class="announce-text">レシピ登録はこちらから</p>
   <!-- レシピ登録ページリンク -->
-  <div><%= link_to "レシピを登録する", new_user_recipe_path(@current_user), class: "registration btn" %></div>
+  <div><%= link_to "レシピを登録する", new_user_recipe_path(@current_user), class: "registration btn", data: { turbo: false } %></div>
   
   <div class="recipe-container">
     <!-- ユーザーのレシピ一覧 -->
