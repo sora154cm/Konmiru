@@ -19,7 +19,7 @@
   </div>
 
   <!-- ログインフォーム開始 -->
-  <%= form_with(url: login_path) do |f| %>
+  <%= form_with(url: login_path, data: { turbo: false }) do |f| %>
   <div class="forms">
     <div class="label-container">
       <a class="form-label">ログインID</a>

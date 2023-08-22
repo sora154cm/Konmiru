@@ -62,7 +62,7 @@
   
   <% if @current_user == @recipe.user %>
     <!-- レシピ編集ページ -->
-    <div><%= link_to "レシピを編集する", edit_user_recipe_path, class: "recipe-edit btn" %></div>
+    <div><%= link_to "レシピを編集する", edit_user_recipe_path, class: "recipe-edit btn", data: { turbo: false } %></div>
   
     <!-- レシピ削除ボタン -->
     <div>
