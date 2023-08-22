@@ -49,14 +49,16 @@ document.addEventListener('DOMContentLoaded', function() {
   document.getElementById('submit-button').addEventListener('click', (event) => {
     // フォーム送信のデフォルトの動作を一旦停止
     event.preventDefault();
+
+    // 食材入力時に空であればアラートを出す
     // すべての食材inputを取得
     let ingredientInputs = document.querySelectorAll('.ingredient-input');
     // 空の食材inputがないことを確認
     for (let i = 0; i < ingredientInputs.length; i++) {
-      // 空の食材inputがあればアラートを出して処理を終了
+      // 空の食材inputがあればアラートを出す
       if (ingredientInputs[i].value == '') {
         alert('入力されてない食材名があります');
-        return;
+        return; // リターンにより処理を中断
       }
     }
     // フォーム送信のデフォルトの動作を再開

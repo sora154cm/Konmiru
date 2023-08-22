@@ -25,6 +25,14 @@
 </header>
 
 <main>
+  <!-- フラッシュメッセージ(3通り)　-->
+  <% if flash[:success] %>
+   <div class="flash flash-success"><%= flash[:success] %></div>
+  <% end %>
+  <% if flash[:edit] %>
+   <div class="flash flash-edit"><%= flash[:edit] %></div>
+  <% end %>
+
   <!-- レシピの名前 -->
   <h3 class="recipe-title"><%= @recipe.recipe_name %></h3>
   

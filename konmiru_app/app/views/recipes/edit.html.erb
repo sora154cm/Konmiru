@@ -43,7 +43,12 @@
     <% end %>
     <!-- 上記の画像をクリックすると画像選択(CSSで普段は非表示) -->
     <%= f.file_field :recipe_image, id: 'recipe_image' %>
-      
+    <!-- レシピ名が空の時のフラッシュメッセージ　-->
+    <% if flash[:error] %>
+      <div class="error-message">
+       <p><%= flash[:error] %></p>
+      </div>
+    <% end %>
     <!-- レシピ名を登録 -->
     <div>
       <%= f.text_field :recipe_name, placeholder: "料理名を入力", class: "recipe_name_field" %>

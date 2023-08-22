@@ -115,6 +115,12 @@ main {
   border: 0.1em solid #eebe9d;
 }
 
+.error-message p {
+  color:rgb(254, 48, 48);
+  font-size:0.8em;
+  margin: 0.5em 0em;
+}
+
 .recipe_name_field {
   border: 0.2em solid  #fb914a;
   border-radius: 0.4em;

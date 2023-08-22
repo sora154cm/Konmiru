@@ -91,6 +91,14 @@ main {
   text-align: center;
 }
 
+/* フラッシュメッセージ */
+.flash {
+  margin-top: 1em;
+  font-size:0.8em;
+  font-weight: 600;
+  color:rgb(9, 129, 9);
+}
+
 .recipe-title {
   margin-bottom:0.4em;
   color:#fb914a;

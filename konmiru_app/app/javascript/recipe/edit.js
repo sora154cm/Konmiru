@@ -63,6 +63,8 @@ document.addEventListener('DOMContentLoaded', function() {
   document.getElementById('submit-button').addEventListener('click', (event) => {
     // フォーム送信のデフォルトの動作を一旦停止
     event.preventDefault();
+
+    //食材入力時に空であればアラートを出す
     // すべての食材inputを取得
     let ingredientInputs = document.querySelectorAll('.ingredient-input');
     // 空の食材inputがないことを確認

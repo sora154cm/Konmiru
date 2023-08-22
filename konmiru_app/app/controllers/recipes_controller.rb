@@ -5,7 +5,6 @@ class RecipesController < ApplicationController
   # ログインしていなかったらログイン画面にリダイレクトする
   def authenticate_user
     if @current_user == nil
-      flash[:notice] = "ログインが必要です"
       redirect_to(login_path)
     end
   end
@@ -24,11 +23,12 @@ class RecipesController < ApplicationController
         # レシピと食材を関連付け、positionフィールドを設定
         RecipeIngredient.create(recipe: @recipe, ingredient: ingredient, position: index)
       end
-      flash[:notice] = "レシピ登録ができました!"
+      flash[:success] = "レシピ登録ができました!"
       redirect_to user_recipe_path(@recipe.user, @recipe)
     else
-      flash[:alert] = @recipe.errors.full_messages
-      redirect_to new_user_recipe_path
+      # レンダリング後のリロード時にPOSTリクエストを行うのでレンダリングは使わない
+      flash[:error] = "レシピ名を入力してください"
+      redirect_to new_user_recipe_path(@current_user)
     end
   end
 
@@ -37,7 +37,7 @@ class RecipesController < ApplicationController
     # 先に子の関係となるデータを削除
     @recipe.recipe_ingredients.destroy_all
     @recipe.destroy
-    flash[:notice] = "レシピの削除が完了しました!"
+    flash[:delete] = "レシピの削除が完了しました!"
     redirect_to index_path
   end
 
@@ -52,6 +52,8 @@ class RecipesController < ApplicationController
   end
 
   def update
+    # レンダリング使用の為、editビューで必要なインスタンス変数を設定
+    @user = User.find(params[:user_id])
     @recipe = Recipe.find(params[:id])
     if @recipe.update(recipe_params)
       @recipe.recipe_ingredients.order(:position).each_with_index do |recipe_ingredient, index|
@@ -76,10 +78,12 @@ class RecipesController < ApplicationController
         end
       end
 
-      flash[:notice] = "レシピ編集が完了しました!"
+      flash[:edit] = "レシピ編集が完了しました!"
       redirect_to user_recipe_path(@recipe.user, @recipe)
     else
-      render :edit
+      # レンダリング後のリロード時にPOSTリクエストを行うのでレンダリングは使わない
+      flash[:error] = flash[:error] = "レシピ名を入力してください"
+      redirect_to edit_user_recipe_path
     end
   end
 

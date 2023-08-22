@@ -91,6 +91,14 @@ main {
   text-align: center;
 }
 
+/* フラッシュメッセージ */
+.flash {
+  margin-top: 1em;
+  font-size:0.8em;
+  font-weight: 600;
+  color:#fb914a;;
+}
+
 .search-text {
   color:#66450f;
   font-size:1em;
