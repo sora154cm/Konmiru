@@ -38,9 +38,12 @@
 
 <!-- メインコンテンツ～ -->
 <main>
-  <!-- フラッシュメッセージ(3通り)　-->
+  <!-- フラッシュメッセージ(2通り)　-->
   <% if flash[:delete] %>
-   <div class="flash flash-delete"><%= flash[:delete] %></div>
+   <div class="flash"><%= flash[:delete] %></div>
+  <% end %>
+  <% if flash[:notice] %>
+   <div class="flash"><%= flash[:notice] %></div>
   <% end %>
 
   <p class="search-text">食材を入力して登録したレシピを検索</p>
