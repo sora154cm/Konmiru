@@ -234,6 +234,7 @@ button {
   font-weight:500;
 }
 
+
 /* タブレット以上のサイズに適用 */
 @media (min-width: 768px) {
 
