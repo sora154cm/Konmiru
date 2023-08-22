@@ -1,4 +1,4 @@
-document.addEventListener("turbo:load", function() {
+document.addEventListener('DOMContentLoaded', function() {
 
   const ingredientSearchForm = document.getElementById('ingredient_search_form');
   const ingredientNameField = document.getElementById('ingredient_name');

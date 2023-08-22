@@ -50,31 +50,30 @@
     </div>
   <% end %>
 
+  <!-- 検索結果のレシピ一覧 -->
   <div class="recipe-container">
-    <!-- ユーザーのレシピ一覧 -->
-    <p class="container-title">みんなのレシピ</p>
-    <!-- 食材リストが並ぶ -->
-    <% @all_recipe.each do |recipe| %>
-      <div class="recipes">
+    <p class="container-title"><%= params[:ingredient_name] %>を<br>使ったレシピ</p>
+    <!-- 検索結果の食材リストが並ぶ -->
+    <% if @recipes.any? %>
+      <% @recipes.each do |recipe| %>
+        <div class="recipes">
         <%= link_to user_recipe_path(recipe.user, recipe), class: "recipe-link" do %>
           <!-- 投稿したレシピ画像が存在すればそれを表示し、存在しなければデフォルトの画像を表示 -->
           <div class="recipe-image"> 
-            <% if recipe.recipe_image.attached? %>
-              <%= image_tag url_for(recipe.recipe_image), size: '200x140', class: "image" %>
-            <% else %>
-              <%= image_tag "no_image.png", size: '200x140', class: "image" %>
-            <% end %>
+          <% if recipe.recipe_image.attached? %>
+            <%= image_tag url_for(recipe.recipe_image), size: '200x140', class: "image" %>
+          <% else %>
+            <%= image_tag "no_image.png", size: '200x140', class: "image" %>
+          <% end %>
           </div>
           <div class="recipe-name"><%= recipe.recipe_name %></div>
         <% end %>
-        <!-- byユーザー名 -->
-        <%= link_to user_path(recipe.user), class: "user-name" do %>
-          <div class="user-name-text">
-            <span class ="by-text">by</span><span><%= recipe.user.user_name.presence || "ユーザー(#{recipe.user.id})" %></span>
-          </div>
-        <% end %>
-      </div>
+        </div>
+      <% end %>
+    <% else %>
+    <p>該当するレシピが見つかりませんでした。</p>
     <% end %>
+  </div>
     <!-- 食材リストここまで -->
   </div>
   

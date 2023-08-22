@@ -5,8 +5,6 @@ Rails.application.routes.draw do
   # ホームページ
   get '/index', to: 'homes#index'
   
-  
-  
   # 新規登録関連のルーティング
   get '/signup', to: 'users#new'
   post '/users', to: 'users#create'
@@ -19,11 +17,13 @@ Rails.application.routes.draw do
 
   # ユーザ関連のルーティング
   resources :users, only: [:show, :edit, :update] do
+    collection do
+      get :all
+    end
     member do
-      # 特定のユーザー(id)に対するマイページをルーティング
-      get :my_page
       # 特定のレシピ(id)に対するレシピ結果をルーティング
-      get :result
+      get :result_current
+      get :result_all
     end
     # レシピ関連のルーティング(ユーザー関連の中にネスト)
     resources :recipes, only: [:index, :show, :new, :create, :edit, :update, :destroy] do

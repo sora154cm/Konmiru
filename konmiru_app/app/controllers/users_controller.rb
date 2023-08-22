@@ -35,7 +35,11 @@ class UsersController < ApplicationController
     end
   end
 
-  def result
+  def result_all
+    # ユーザーやレシピ情報の取得
+    @user = User.all
+    @all_recipe = Recipe.all
+
     @ingredient_name = params[:ingredient_name]
     @ingredient = Ingredient.find_by(ingredient_name: @ingredient_name)
       
@@ -47,6 +51,23 @@ class UsersController < ApplicationController
       flash[:alert] = "該当する食材が見つかりませんでした"
     end
   end
+
+  def result_current
+    @ingredient_name = params[:ingredient_name]
+    
+    # ログインしているユーザーが作成したレシピの中で、指定された食材を使用しているレシピを検索
+    @recipes = @current_user.recipes.joins(:recipe_ingredients => :ingredient)
+                                   .where(ingredients: { ingredient_name: @ingredient_name })
+                                   .includes(:user, :recipe_image_attachment)
+
+    if @recipes.any?
+      @ingredient = @recipes.first.recipe_ingredients.first.ingredient
+    else
+      @recipes = []
+      flash[:alert] = "該当する食材が見つかりませんでした"
+    end
+end
+
 
   def edit
     @user = User.find(params[:id])

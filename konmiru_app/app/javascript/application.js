@@ -2,7 +2,7 @@
 import "@hotwired/turbo-rails"
 import "controllers"
 
-document.addEventListener("turbo:load", function() {
+document.addEventListener('DOMContentLoaded', function() {
   // ～～画像選択に伴う処理開始～～
   // .imageクラスを持つすべての要素を選択
   let imageElems = document.querySelectorAll('.image');

@@ -1,4 +1,4 @@
-document.addEventListener("turbo:load", function() {
+document.addEventListener('DOMContentLoaded', function() {
   // HTMLからIDを取得
   window.userId = document.getElementById('user_id').value;
   window.recipeId = document.getElementById('recipe_id').value;

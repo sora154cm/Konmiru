@@ -1,4 +1,4 @@
-document.addEventListener("turbo:load", function() {
+document.addEventListener('DOMContentLoaded', function() {
 
   // ~食材追加のフォーム追加や削除に伴う処理開始~
   function createNewIngredient(formCount) {

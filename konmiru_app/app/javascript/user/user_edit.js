@@ -1,4 +1,4 @@
-document.addEventListener("turbo:load", function() {
+document.addEventListener('DOMContentLoaded', function() {
   
   // Submitボタンの取得
   const submitButton = document.getElementById('submit-button');
