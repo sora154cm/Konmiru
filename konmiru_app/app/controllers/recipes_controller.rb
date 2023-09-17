@@ -17,10 +17,13 @@ class RecipesController < ApplicationController
   def create
     @recipe = Recipe.new(recipe_params)
     if @recipe.save
+      # ingredient_nameは食材名、indexはその順序（0から始まる）params[:ingredients]は["食材1","食材2"]
+      # 飛んできた配列データをもとにレシピと食材の関係性を中間テーブルに記録
       params[:ingredients].each_with_index do |ingredient_name, index|
-        # 食材が既に存在するかチェック
+        # 食材が既に存在するかチェック(重複した食材名が複数追加されないようにする)
         ingredient = Ingredient.find_or_create_by(ingredient_name: ingredient_name)
-        # レシピと食材を関連付け、positionフィールドを設定
+        # レシピと食材を関連付け、position(順番)フィールドを設定。
+        # recipe:とingredient:はモデルで定義したところから
         RecipeIngredient.create(recipe: @recipe, ingredient: ingredient, position: index)
       end
       flash[:success] = "レシピ登録ができました!"
@@ -52,7 +55,7 @@ class RecipesController < ApplicationController
   end
 
   def update
-    # レンダリング使用の為、editビューで必要なインスタンス変数を設定
+    # レンダリング使用の為、edit ビューに戻る場合のために@user = User.find(params[:user_id])は必要
     @user = User.find(params[:user_id])
     @recipe = Recipe.find(params[:id])
     if @recipe.update(recipe_params)
@@ -82,7 +85,7 @@ class RecipesController < ApplicationController
       redirect_to user_recipe_path(@recipe.user, @recipe)
     else
       # レンダリング後のリロード時にPOSTリクエストを行うのでレンダリングは使わない
-      flash[:error] = flash[:error] = "レシピ名を入力してください"
+      flash[:error] = "レシピ名を入力してください"
       redirect_to edit_user_recipe_path
     end
   end

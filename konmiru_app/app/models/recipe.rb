@@ -1,4 +1,5 @@
 class Recipe < ApplicationRecord
+  # Active Storageを使用してモデルにファイルを添付
   has_one_attached :recipe_image
 
   belongs_to :user

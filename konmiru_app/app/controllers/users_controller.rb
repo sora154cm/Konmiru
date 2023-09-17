@@ -39,8 +39,9 @@ class UsersController < ApplicationController
     # ユーザーやレシピ情報の取得
     @user = User.all
     @all_recipe = Recipe.all
-
+     # ユーザーが入力または送信した食材名を、HTTPリクエストのparamsから取得
     @ingredient_name = params[:ingredient_name]
+    # @ingredient_nameと一致するingredient_nameを持つレコードを検索
     @ingredient = Ingredient.find_by(ingredient_name: @ingredient_name)
       
     if @ingredient
@@ -52,20 +53,18 @@ class UsersController < ApplicationController
   end
 
   def result_current
+    # ユーザーが入力または送信した食材名を、HTTPリクエストのparamsから取得
     @ingredient_name = params[:ingredient_name]
     
     # ログインしているユーザーが作成したレシピの中で、指定された食材を使用しているレシピを検索
-    @recipes = @current_user.recipes.joins(:recipe_ingredients => :ingredient)
-                                   .where(ingredients: { ingredient_name: @ingredient_name })
+    @recipes = @current_user.recipes.joins(:recipe_ingredients => :ingredient) # recipe_ingredientsテーブルとingredientsテーブルとの結合
+                                   .where(ingredients: { ingredient_name: @ingredient_name }) 
                                    .includes(:user, :recipe_image_attachment)
-
-    if @recipes.any?
-      @ingredient = @recipes.first.recipe_ingredients.first.ingredient
-    else
-      @recipes = []
-    end
-end
-
+                                   # @ingredient_nameに一致する食材を使用しているレシピを絞り込む
+                                   # includesメソッド使用で@recipes内の各レシピに関連付けられた情報(ユーザー・画像等)を一度のクエリで事前読み込み
+    # @recipesが無かったら配列を空にする
+    @recipes = [] unless @recipes.any?                               
+  end
 
   def edit
     @user = User.find(params[:id])

@@ -19,11 +19,11 @@ Rails.application.routes.draw do
   resources :users, only: [:show, :edit, :update] do
     collection do
       get :all
+      get :result_all
     end
     member do
       # 特定のレシピ(id)に対するレシピ結果をルーティング
       get :result_current
-      get :result_all
     end
     # レシピ関連のルーティング(ユーザー関連の中にネスト)
     resources :recipes, only: [:index, :show, :new, :create, :edit, :update, :destroy] do
