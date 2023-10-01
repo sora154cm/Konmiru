@@ -13,12 +13,12 @@
       <div class="header-link-text">ログアウト</div>
     <% end %>
     <!-- ユーザー一覧ページ -->
-    <%= link_to all_users_path, class:"header-link", data: { turbo: false } do %>
+    <%= link_to all_users_path, class:"header-link" do %>
       <div class="link-icon"><i class="fa-solid fa-users"></i></div>
       <div class="header-link-text">レシピ一覧</div>
     <% end %>
     <!-- ホームページリンク -->
-    <%= link_to index_path, class:"header-link", data: { turbo: false } do %>
+    <%= link_to index_path, class:"header-link" do %>
       <div class="link-icon"><i class="fa-solid fa-house"></i></div>
       <div class="header-link-text">ホーム</div>
     <% end %>
