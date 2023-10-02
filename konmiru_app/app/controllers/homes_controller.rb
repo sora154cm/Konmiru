@@ -12,7 +12,8 @@ class HomesController < ApplicationController
 
   def index
     # N+1問題を解消
-    @current_user.recipes = @current_user.recipes.with_attached_recipe_image
+    @current_user_recipes = @current_user.recipes.with_attached_recipe_image.page(params[:page]).per(8) 
+    # .page(params[:page]).per(8)#により 1ページあたり8項目表示
   end
 
   def top

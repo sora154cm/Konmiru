@@ -76,7 +76,14 @@
     <% end %>
   </div>
     <!-- 食材リストここまで -->
+
+  <!-- ページネーションのリンク-->
+  <div class="item-paginate">
+    <%= paginate @recipes %>
+  </div>
 </main>
+
+
 
 <!-- JavaScriptファイルの読み込み -->
 <% content_for :js do %>

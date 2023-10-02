@@ -128,7 +128,7 @@ main {
 button {
   position: absolute;
   z-index: 2;
-  right: 0%;  
+  right: -12%;  
   top: 50%;
   transform: translateY(-50%); 
   /* 背景を透明 */
@@ -235,6 +235,66 @@ button {
   font-weight:500;
 }
 
+/* ページネーションの装飾 */
+/* ページネーションコンテナのスタイリング */
+.item-paginate {
+  text-align: center;
+  padding: 10px;
+  font-weight: 600;
+  font-size:1.2em;
+}
+/* kaminari_ja.ymlで設定したクラス */
+.pagination-symbol {
+  font-size: 1.4em;
+  font-weight: 700;
+}
+
+/* ページネーションナビゲーションのスタイリング */
+.item-paginate .pagination {
+  display: inline-block;
+}
+
+/* 各ページネーションアイテムのスタイリング */
+.item-paginate .page,
+.item-paginate .first,
+.item-paginate .prev,
+.item-paginate .next,
+.item-paginate .last {
+  display: inline-block;
+  margin: 0px 2px;
+  border-radius: 12px; /* ここでアイテムの丸みを指定 */
+}
+
+/* アクティブなページネーションアイテムのスタイリング */
+.item-paginate .page.current {
+  background-color: #66450f;
+  color: #fff;
+  padding: 8px 12px;
+  border-radius: 12px; /* アクティブアイテムの丸みを指定 */
+}
+
+/* ページネーションリンクのスタイリング */
+.item-paginate .page a,
+.item-paginate .first a,
+.item-paginate .prev a,
+.item-paginate .next a,
+.item-paginate .last a {
+  padding: 8px 12px;
+  border: 1px solid #ddd;
+  color: #66450f;
+  text-decoration: none;
+  border-radius: 10px; /* リンクの丸みを指定 */
+}
+
+/* ページネーションリンクホバー時のスタイリング */
+.item-paginate .page a:hover,
+.item-paginate .first a:hover,
+.item-paginate .prev a:hover,
+.item-paginate .next a:hover,
+.item-paginate .last a:hover {
+  background-color: #e7d9c0;
+  border-radius: 10px; /* ホバー時のリンクの丸みを指定 */
+}
 
 /* タブレット以上のサイズに適用 */
 @media (min-width: 768px) {
@@ -279,7 +339,7 @@ button {
   }
 
   button {
-    right: 15%;  
+    right: 5%;  
   }
 
   .search-text,
@@ -299,7 +359,7 @@ button {
   }
 
   .recipe-container {
-    width: 85%;
+    width: 60%;
   }
 
   .container-title {
@@ -309,5 +369,15 @@ button {
   .recipe-name {
     font-size: 1.4em;
   }
+
+  .item-paginate .page,
+  .item-paginate .first,
+  .item-paginate .prev,
+  .item-paginate .next,
+  .item-paginate .last {
+  margin: 0px 5px;
+  }
+
 }
+
 

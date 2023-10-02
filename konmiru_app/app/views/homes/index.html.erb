@@ -65,7 +65,7 @@
     <!-- ユーザーのレシピ一覧 -->
     <p class="container-title">あなたのレシピ</p>
     <!-- 食材リストが並ぶ -->
-    <% @current_user.recipes.each do |recipe| %>
+    <% @current_user_recipes.each do |recipe| %>
       <div class="recipes">
         <%= link_to user_recipe_path(recipe.user, recipe), class: "recipe-link" do %>
           <!-- 投稿したレシピ画像が存在すればそれを表示し、存在しなければデフォルトの画像を表示 -->
@@ -82,6 +82,10 @@
     <% end %>
     <!-- 食材リストここまで -->
 
+  </div>
+  <!-- ページネーションのリンク-->
+  <div class="item-paginate">
+    <%= paginate @current_user_recipes %>
   </div>
   
 </main>

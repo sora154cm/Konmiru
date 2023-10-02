@@ -15,7 +15,7 @@ class UsersController < ApplicationController
 
   def all
     @user = User.all
-    @all_recipe = Recipe.all
+    @all_recipe = Recipe.all.page(params[:page]).per(8)
   end
 
   def show
@@ -46,7 +46,7 @@ class UsersController < ApplicationController
       
     if @ingredient
       # N+1問題を解消するため、includesメソッドを使用
-      @recipes = @ingredient.recipes.includes(:user, :recipe_image_attachment)
+      @recipes = @ingredient.recipes.includes(:user, :recipe_image_attachment).page(params[:page]).per(8)
     else
       @recipes = []
     end
@@ -63,7 +63,11 @@ class UsersController < ApplicationController
                                    # @ingredient_nameに一致する食材を使用しているレシピを絞り込む
                                    # includesメソッド使用で@recipes内の各レシピに関連付けられた情報(ユーザー・画像等)を一度のクエリで事前読み込み
     # @recipesが無かったら配列を空にする
-    @recipes = [] unless @recipes.any?                               
+    if @recipes.any?
+      @recipes = @recipes.page(params[:page]).per(8)
+    else
+      @recipes = []
+    end                                 
   end
 
   def edit

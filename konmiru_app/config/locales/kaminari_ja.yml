@@ -1,0 +1,8 @@
+ja:
+  views:
+    pagination:
+      first: "<span class='pagination-symbol'>&laquo;</span> "
+      last: " <span class='pagination-symbol'>&raquo;</span>"
+      previous: "<span class='pagination-symbol'>&lsaquo;</span> "
+      next: " <span class='pagination-symbol'>&rsaquo;</span>"
+      truncate: "..."
