@@ -110,8 +110,9 @@ main {
   border: 0.2em solid #fb914a;
   border-radius: 0.4em;
   width:70%;
-  height: 2em;
+  height: 3em;
   margin-top:0.2em;
+  font-size: 0.9em;
 }
 
 .profile-name-field:hover {

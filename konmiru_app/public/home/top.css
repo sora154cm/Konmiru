@@ -162,7 +162,7 @@ main {
   }
 
   .app-image {
-    width:50%;
+    width:40%;
   }
 
   .concept-message {
@@ -194,12 +194,13 @@ main {
 
   /* ボタンサイズ調整 */
   .btn {
-    width: 60%;
-    height: 4em;
+    width: 50%;
+    height: 3em;
   }
 
   .entrance-icon {
     font-size: 1.2em;
-    line-height: 4em;
+    line-height: 3em;
+    margin-bottom:2em;
   }
 }

@@ -261,7 +261,9 @@ main {
 
   .recipe-delete {
     line-height:50px;
+    margin-bottom:2em;
   }
+
 
   .btn {
       width: 250px; /* ボタンの幅を大きく */

@@ -113,8 +113,8 @@ main {
 }
 
 #ingredient_name {
-  width:80%;
-  height: 3em;
+  width:100%;
+  height: 3.5em;
   padding-right: 30px;  
   transition: padding-right 0.3s;  /* オプション：スムーズな変更のためのアニメーション */
   /* z-indexを効かせるためにはpositionを指定 */
@@ -122,12 +122,13 @@ main {
   z-index: 1; 
   border: 2px solid #66450f;
   border-radius: 3px;
+  font-size:0.9em;
 }
 
 button {
   position: absolute;
   z-index: 2;
-  right: 10%;  
+  right: 0%;  
   top: 50%;
   transform: translateY(-50%); 
   /* 背景を透明 */
@@ -155,8 +156,8 @@ button {
 
 .btn {
   display: inline-block;
-  width: 200px; 
-  height: 40px; 
+  width: 80%; 
+  height: 3em; 
   box-shadow: 0px 2px #524b42;
   border-radius: 5px;
   position: relative;
@@ -176,11 +177,11 @@ button {
   text-decoration: none;
   margin-top:0.5em;
   color:white;
-  font-size:14px;
+  font-size:1em;
   font-weight: 600;
   background-color: #fb914a;
   text-align: center;
-  line-height:40px;
+  line-height:3em;
 }
 
 .registration:hover {

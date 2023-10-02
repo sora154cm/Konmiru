@@ -125,8 +125,9 @@ main {
   border: 0.2em solid  #fb914a;
   border-radius: 0.4em;
   width:60%;
-  height: 2.5em;
+  height: 3em;
   margin-top:0.2em;
+  font-size: 0.9em;
 }
 
 .recipe_name_field:hover {
@@ -151,13 +152,14 @@ main {
 .add-ingredient-button {
   font-weight: 600;
   background-color: rgb(9, 129, 9);
-  margin:0em 0em;
+  margin: 0em 0em;
   border: none;
   border-radius: 0.4em;
   color: white;
-  padding: 0.8em 1.4em;
+  padding: 1em 2em;
   cursor: pointer;
   transition: background-color 0.3s;
+  font-size: 1em;
 }
 
 .add-ingredient-button:hover {
@@ -171,6 +173,7 @@ main {
   padding: 0.2em 0.5em;
   margin-left: 0.3em;
   margin-bottom: 0.3em;
+  height: 2.5em;
 }
 
 .delete-ingredient-button {
@@ -184,7 +187,8 @@ main {
   width:90%;
   border: 0.2em solid  #fb914a;
   border-radius: 0.4em;
-  height: 7em;
+  height: 9em;
+  font-size: 1em;
 }
 
 .recipe {
@@ -201,11 +205,12 @@ main {
 
 .btn {
   display: inline-block;
-  width: 60%; 
-  height: 3em; 
+  width: 80%; 
+  height: 3.5em; 
   box-shadow: 0px 2px #524b42;
   border-radius: 5px;
   position: relative;
+  font-size: 1em;
 }
 
 .btn:active {
@@ -258,7 +263,7 @@ main {
   }
 
   .recipe_name_field {
-    width: 70%;
+    width: 40%;
     height: 3em;
     margin-top: 0.5em;
   }

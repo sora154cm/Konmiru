@@ -44,7 +44,7 @@ main {
 }
 
 .form-message {
-  font-size:0.9em;
+  font-size:1%;
 }
 
 .forms {
@@ -53,7 +53,7 @@ main {
 
 .form-label {
   margin-right:0.5em;
-  font-size:1em;
+  font-size:1.2em;
 }
 
 .field_with_errors {
@@ -64,12 +64,12 @@ main {
 
 .login-form {
   width:90%;
-  height: 2.5em;
+  height: 3em;
 }
 
 .password-form {
   width:90%;
-  height: 2.5em;
+  height: 3em;
 }
 
 .login {
@@ -128,7 +128,7 @@ main {
 
   .header-log {
     font-size: 1.2em;
-    width: 90%;
+    width: 60%;
   }
 
   .fa-key {
@@ -136,7 +136,7 @@ main {
   }
 
   main {
-    width: 90%;
+    width: 60%;
   }
 
   .mini-message h3 {
@@ -157,17 +157,17 @@ main {
   }
 
   .login-form, .password-form {
-    width: 95%;
+    width: 60%;
     height: 3em;
   }
 
   .login {
-    font-size: 1.2em;
+    font-size: 1em;
   }
 
   .btn {
-    width: 70%;
-    height: 3.5em;
+    width: 30%;
+    height: 2em;
   }
 
   .new-registration {
@@ -175,7 +175,8 @@ main {
   }
 
   .registration {
-    font-size: 1.2em;
+    font-size: 1em;
+    line-height: 2em;
   }
 
 }
