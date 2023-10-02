@@ -13,12 +13,12 @@
       <div class="header-link-text">ログアウト</div>
     <% end %>
     <!-- ユーザー一覧ページ -->
-    <%= link_to all_users_path, class:"header-link" do %>
+    <%= link_to all_users_path, data: { turbo: "false" }, class:"header-link" do %>
       <div class="link-icon"><i class="fa-solid fa-users"></i></div>
       <div class="header-link-text">レシピ一覧</div>
     <% end %>
     <!-- ホームページリンク -->
-    <%= link_to index_path, class:"header-link" do %>
+    <%= link_to index_path, data: { turbo: "false" }, class:"header-link" do %>
       <div class="link-icon"><i class="fa-solid fa-house"></i></div>
       <div class="header-link-text">ホーム</div>
     <% end %>
@@ -41,7 +41,7 @@
 
   <p class="search-text">食材を入力してみんなのレシピを検索</p>
   <!-- 検索フォーム -->
-  <%= form_with(url: result_all_users_path, method: "get", local: true, id: "ingredient_search_form") do %>
+  <%= form_with(url: result_all_users_path, method: "get", local: true, id: "ingredient_search_form", data: { turbo: "false" }) do %>
     <div class="search-container">
       <%= text_field_tag :ingredient_name, nil, id: "ingredient_name", placeholder: "食材名を入力" %>
       <%= button_tag(type: 'submit') do %>

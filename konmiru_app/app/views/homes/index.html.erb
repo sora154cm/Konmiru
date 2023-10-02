@@ -13,12 +13,13 @@
       <div class="header-link-text">ログアウト</div>
     <% end %>
     <!-- ユーザー一覧ページ -->
-    <%= link_to all_users_path, class:"header-link" do %>
+    <%= link_to all_users_path, data: { turbo: "false" }, class:"header-link" do %>
       <div class="link-icon"><i class="fa-solid fa-users"></i></div>
       <div class="header-link-text">レシピ一覧</div>
     <% end %>
+
     <!-- プロフィール編集ページリンク -->
-    <%= link_to edit_user_path(@current_user), class:"header-link" do %>
+    <%= link_to edit_user_path(@current_user), data: { turbo: "false" }, class:"header-link" do %>
       <div class="link-icon"><i class="fa-solid fa-user-gear"></i></div>
       <div class="header-link-text">編集</div>
     <% end %>
@@ -48,7 +49,7 @@
 
   <p class="search-text">食材を入力して登録したレシピを検索</p>
   <!-- 検索フォーム -->
-  <%= form_with(url: result_current_user_path(@current_user), method: "get", local: true, id: "ingredient_search_form") do %>
+  <%= form_with(url: result_current_user_path(@current_user), method: "get", local: true, id: "ingredient_search_form", data: { turbo: "false" }) do %>
     <div class="search-container">
       <%= text_field_tag :ingredient_name, nil, id: "ingredient_name", placeholder: "食材名を入力" %>
       <%= button_tag(type: 'submit') do %>
@@ -59,8 +60,10 @@
 
   <p class="announce-text">レシピ登録はこちらから</p>
   <!-- レシピ登録ページリンク -->
-  <div><%= link_to "レシピを登録する", new_user_recipe_path(@current_user), class: "registration btn" %></div>
-  
+  <div>
+    <%= link_to "レシピを登録する", new_user_recipe_path(@current_user), data: { turbo: "false" }, class: "registration btn" %>
+  </div>
+
   <div class="recipe-container">
     <!-- ユーザーのレシピ一覧 -->
     <p class="container-title">あなたのレシピ</p>
