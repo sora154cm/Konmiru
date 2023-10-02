@@ -107,15 +107,16 @@ main {
 }
 
 /* 検索フォーム～ */
+
 .search-container {
   position: relative;
   display: inline-block;  /* サイズをコンテンツに合わせる */
+  width:75%;
 }
 
 #ingredient_name {
   width:100%;
-  height: 3.5em;
-  padding-right: 30px;  
+  height: 3.5em; 
   transition: padding-right 0.3s;  /* オプション：スムーズな変更のためのアニメーション */
   /* z-indexを効かせるためにはpositionを指定 */
   position: relative; 
@@ -128,7 +129,7 @@ main {
 button {
   position: absolute;
   z-index: 2;
-  right: -12%;  
+  right: 0%;  
   top: 50%;
   transform: translateY(-50%); 
   /* 背景を透明 */
@@ -332,14 +333,9 @@ button {
     width: 350px;  
   }
 
-  #ingredient_name {
-    padding-right: 80px;  
-    width: 70%;
+  #ingredient_name {  
+    width: 100%;
     height: 4em;
-  }
-
-  button {
-    right: 5%;  
   }
 
   .search-text,
