@@ -78,9 +78,12 @@
     <!-- 食材リストここまで -->
 
   <!-- ページネーションのリンク-->
-  <div class="item-paginate">
-    <%= paginate @recipes %>
-  </div>
+  <% if @recipes.present? %>
+    <div class="item-paginate">
+      <%= paginate @recipes %>
+    </div>
+  <% end %>
+
 </main>
 
 

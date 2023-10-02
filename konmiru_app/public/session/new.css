@@ -45,10 +45,11 @@ main {
 
 .form-message {
   font-size:1%;
+  margin: 10px 0px;
 }
 
 .forms {
-  margin-bottom:0.5em;
+  margin-bottom:1em;
 }
 
 .form-label {

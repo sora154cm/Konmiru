@@ -1,7 +1,6 @@
 // Configure your import map in config/importmap.rb. Read more: https://github.com/rails/importmap-rails
 import "@hotwired/turbo-rails"
 import "controllers"
-Turbo.session.drive = false
 
 document.addEventListener('DOMContentLoaded', function() {
   // ～～画像選択に伴う処理開始～～

@@ -39,36 +39,30 @@ class UsersController < ApplicationController
     # ユーザーやレシピ情報の取得
     @user = User.all
     @all_recipe = Recipe.all
-     # ユーザーが入力または送信した食材名を、HTTPリクエストのparamsから取得
+    # ユーザーが入力または送信した食材名を、HTTPリクエストのparamsから取得
     @ingredient_name = params[:ingredient_name]
     # @ingredient_nameと一致するingredient_nameを持つレコードを検索
     @ingredient = Ingredient.find_by(ingredient_name: @ingredient_name)
-      
+        
     if @ingredient
       # N+1問題を解消するため、includesメソッドを使用
       @recipes = @ingredient.recipes.includes(:user, :recipe_image_attachment).page(params[:page]).per(8)
-    else
-      @recipes = []
     end
   end
 
   def result_current
     # ユーザーが入力または送信した食材名を、HTTPリクエストのparamsから取得
     @ingredient_name = params[:ingredient_name]
-    
+  
     # ログインしているユーザーが作成したレシピの中で、指定された食材を使用しているレシピを検索
-    @recipes = @current_user.recipes.joins(:recipe_ingredients => :ingredient) # recipe_ingredientsテーブルとingredientsテーブルとの結合
-                                   .where(ingredients: { ingredient_name: @ingredient_name }) 
-                                   .includes(:user, :recipe_image_attachment)
-                                   # @ingredient_nameに一致する食材を使用しているレシピを絞り込む
-                                   # includesメソッド使用で@recipes内の各レシピに関連付けられた情報(ユーザー・画像等)を一度のクエリで事前読み込み
-    # @recipesが無かったら配列を空にする
-    if @recipes.any?
-      @recipes = @recipes.page(params[:page]).per(8)
-    else
-      @recipes = []
-    end                                 
+    # @ingredient_nameに一致する食材を使用しているレシピを絞り込む
+     # includesメソッド使用で@recipes内の各レシピに関連付けられた情報(ユーザー・画像等)を一度のクエリで事前読み込み
+    @recipes = @current_user.recipes.joins(:recipe_ingredients => :ingredient)
+                                 .where(ingredients: { ingredient_name: @ingredient_name }) 
+                                 .includes(:user, :recipe_image_attachment)
+                                 .page(params[:page]).per(8)
   end
+  
 
   def edit
     @user = User.find(params[:id])

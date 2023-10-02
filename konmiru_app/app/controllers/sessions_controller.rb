@@ -34,6 +34,6 @@ class SessionsController < ApplicationController
     # ログインユーザーのセッションを解除
     session.delete(:user_id)
     flash[:notice] = "ログアウトしました！"
-    redirect_to index_path
+    redirect_to login_path
   end
 end
