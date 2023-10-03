@@ -129,7 +129,7 @@ main {
 button {
   position: absolute;
   z-index: 2;
-  right: -5%;  
+  right: -5px; 
   top: 50%;
   transform: translateY(-50%); 
   /* 背景を透明 */
