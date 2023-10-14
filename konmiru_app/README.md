@@ -54,31 +54,31 @@ _(スマートフォンでの使用を推奨)_
 
 <table>
   <tr>
-    <td style="vertical-align:top; width:25%;">
+    <td style="vertical-align:top; width:33%;">
       <div style="height:40px; line-height:40px; text-align:center;"><strong>ホームページ</strong></div>
-      <div style="text-align:center;"><img src="public/README/homepage.png" alt="ホームページ" style="max-width:100%;"/></div>
+      <div style="text-align:center;"><img src="public/README/homepage.png" alt="ホームページ" width="200" style="max-width:100%;"/></div>
     </td>
-    <td style="vertical-align:top; width:25%;">
+    <td style="vertical-align:top; width:33%;">
       <div style="height:40px; line-height:40px; text-align:center;"><strong>検索結果</strong></div>
-      <div style="text-align:center;"><img src="public/README/search_result.png" alt="検索結果" style="max-width:100%;"/></div>
+      <div style="text-align:center;"><img src="public/README/search_result.png" alt="検索結果" width="200" style="max-width:100%;"/></div>
     </td>
-    <td style="vertical-align:top; width:25%;">
+    <td style="vertical-align:top; width:33%;">
       <div style="height:40px; line-height:40px; text-align:center;"><strong>プロフィール編集</strong></div>
-      <div style="text-align:center;"><img src="public/README/profile_edit.png" alt="プロフィール編集" style="max-width:100%;"/></div>
+      <div style="text-align:center;"><img src="public/README/profile_edit.png" width="200" alt="プロフィール編集" style="max-width:100%;"/></div>
     </td>
   </tr>
   <tr>
-    <td style="vertical-align:top; width:25%;">
+    <td style="vertical-align:top; width:33%;">
       <div style="height:40px; line-height:40px; text-align:center;"><strong>レシピ登録</strong></div>
-      <div style="text-align:center;"><img src="public/README/recipe_new.png" alt="ホームページ" style="max-width:100%;"/></div>
+      <div style="text-align:center;"><img src="public/README/recipe_new.png" width="200" alt="ホームページ" style="max-width:100%;"/></div>
     </td>
-    <td style="vertical-align:top; width:25%;">
+    <td style="vertical-align:top; width:33%;">
       <div style="height:40px; line-height:40px; text-align:center;"><strong>レシピ編集</strong></div>
-      <div style="text-align:center;"><img src="public/README/recipe_edit.png" alt="検索結果" style="max-width:100%;"/></div>
+      <div style="text-align:center;"><img src="public/README/recipe_edit.png" width="200" alt="検索結果" style="max-width:100%;"/></div>
     </td>
-    <td style="vertical-align:top; width:25%;">
+    <td style="vertical-align:top; width:33%;">
       <div style="height:40px; line-height:40px; text-align:center;"><strong>レシピ詳細</strong></div>
-      <div style="text-align:center;"><img src="public/README/recipe_detail.png" alt="プロフィール編集" style="max-width:100%;"/></div>
+      <div style="text-align:center;"><img src="public/README/recipe_detail.png" width="200" alt="プロフィール編集" style="max-width:100%;"/></div>
     </td>
   </tr>
   <!-- ...他の行... -->
