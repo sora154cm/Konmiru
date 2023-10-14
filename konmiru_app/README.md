@@ -52,39 +52,12 @@ _(スマートフォンでの使用を推奨)_
 
 ## 画面紹介
 
-<table>
-  <tr>
-    <td style="vertical-align:top; width:33%;">
-      <div style="height:40px; line-height:40px; text-align:center;"><strong>ホームページ</strong></div>
-      <div style="text-align:center;"><img src="public/README/homepage.png" alt="ホームページ" width="200" style="max-width:100%;"/></div>
-    </td>
-    <td style="vertical-align:top; width:33%;">
-      <div style="height:40px; line-height:40px; text-align:center;"><strong>検索結果</strong></div>
-      <div style="text-align:center;"><img src="public/README/search_result.png" alt="検索結果" width="200" style="max-width:100%;"/></div>
-    </td>
-    <td style="vertical-align:top; width:33%;">
-      <div style="height:40px; line-height:40px; text-align:center;"><strong>プロフィール編集</strong></div>
-      <div style="text-align:center;"><img src="public/README/profile_edit.png" width="200" alt="プロフィール編集" style="max-width:100%;"/></div>
-    </td>
-  </tr>
-  <tr>
-    <td style="vertical-align:top; width:33%;">
-      <div style="height:40px; line-height:40px; text-align:center;"><strong>レシピ登録</strong></div>
-      <div style="text-align:center;"><img src="public/README/recipe_new.png" width="200" alt="ホームページ" style="max-width:100%;"/></div>
-    </td>
-    <td style="vertical-align:top; width:33%;">
-      <div style="height:40px; line-height:40px; text-align:center;"><strong>レシピ編集</strong></div>
-      <div style="text-align:center;"><img src="public/README/recipe_edit.png" width="200" alt="検索結果" style="max-width:100%;"/></div>
-    </td>
-    <td style="vertical-align:top; width:33%;">
-      <div style="height:40px; line-height:40px; text-align:center;"><strong>レシピ詳細</strong></div>
-      <div style="text-align:center;"><img src="public/README/recipe_detail.png" width="200" alt="プロフィール編集" style="max-width:100%;"/></div>
-    </td>
-  </tr>
-  <!-- ...他の行... -->
-</table>
+|                  ホームページ                  |                  検索結果                   |                  プロフィール編集                   |
+|:------------------------------------------:|:----------------------------------------:|:------------------------------------------:|
+| ![ホームページ](public/README/homepage.png) | ![検索結果](public/README/search_result.png) | ![プロフィール編集](public/README/profile_edit.png) |
+|                  レシピ登録                   |                  レシピ編集                    |                  レシピ詳細                    |
+| ![レシピ登録](public/README/recipe_new.png) | ![レシピ編集](public/README/recipe_edit.png) | ![レシピ詳細](public/README/recipe_detail.png) |
 
-  
 
 ## ER図
 ![ER図](public/README/er-image.png)
