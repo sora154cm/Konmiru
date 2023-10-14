@@ -52,11 +52,11 @@ _(スマートフォンでの使用を推奨)_
 
 ## 画面紹介
 
-|                  ホームページ                  |                  検索結果                   |                  プロフィール編集                   |
-|:------------------------------------------:|:----------------------------------------:|:------------------------------------------:|
-| ![ホームページ](public/README/homepage.png) | ![検索結果](public/README/search_result.png) | ![プロフィール編集](public/README/profile_edit.png) |
-|                  レシピ登録                   |                  レシピ編集                    |                  レシピ詳細                    |
-| ![レシピ登録](public/README/recipe_new.png) | ![レシピ編集](public/README/recipe_edit.png) | ![レシピ詳細](public/README/recipe_detail.png) |
+|        **ホームページ**        |         **検索結果**          |      **プロフィール編集**       |
+|:---------------------------:|:--------------------------:|:---------------------------:|
+| <img src="public/README/homepage.png" alt="ホームページ" width="200"> | <img src="public/README/search_result.png" alt="検索結果" width="200"> | <img src="public/README/profile_edit.png" alt="プロフィール編集" width="200"> |
+|        **レシピ登録**        |         **レシピ編集**         |         **レシピ詳細**         |
+| <img src="public/README/recipe_new.png" alt="レシピ登録" width="200"> | <img src="public/README/recipe_edit.png" alt="レシピ編集" width="200"> | <img src="public/README/recipe_detail.png" alt="レシピ詳細" width="200"> |
 
 
 ## ER図
