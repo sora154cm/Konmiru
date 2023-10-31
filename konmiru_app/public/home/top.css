@@ -42,18 +42,18 @@ header {
 }
 
 .fa-utensils {
-  font-size:1.6em;
+  font-size:1.5em;
 }
 
 .logo-text {
-  font-size:0.8em;
+  font-size:0.7em;
   margin-left: 10px; 
 }
 
 
 .concept-message {
   color:#444;
-  font-size:1.2em; 
+  font-size:1.1em; 
   font-weight: bold;
 }
 
@@ -69,7 +69,11 @@ main {
 }
 
 .app-image {
-  width:90%;
+  width:70%;
+  border-radius: 1em;
+  border:solid 0.1em rgb(9, 129, 9);
+  padding:0.8em; 
+  background-color: white;
 }
 
 /* 使い方ガイドのスタイル */
@@ -102,7 +106,7 @@ main {
 
 .btn {
   display: inline-block;
-  width: 70%; 
+  width: 60%; 
   height: 3em; 
   box-shadow: 0px 2px #524b42;
   border-radius: 5px;
@@ -150,15 +154,15 @@ main {
   }
 
   .header-log {
-    font-size: 1.4em;
+    font-size: 1.3em;
   }
 
   .fa-utensils {
-    font-size: 2em;
+    font-size: 1.9em;
   }
 
   .logo-text {
-    font-size: 1em;
+    font-size: 0.9em;
   }
 
   .app-image {
@@ -166,7 +170,7 @@ main {
   }
 
   .concept-message {
-    font-size: 1.5em;
+    font-size: 1.4em;
   }
 
   /* 使い方ガイドのスタイル調整 */
@@ -194,7 +198,7 @@ main {
 
   /* ボタンサイズ調整 */
   .btn {
-    width: 50%;
+    width: 40%;
     height: 3em;
   }
 
