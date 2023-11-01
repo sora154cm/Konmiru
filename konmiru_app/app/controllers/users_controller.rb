@@ -20,6 +20,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+    @recipes = @user.recipes.includes(:recipe_image_attachment).page(params[:page]).per(8)
   end
 
   def create
@@ -36,17 +37,16 @@ class UsersController < ApplicationController
   end
 
   def result_all
-    # ユーザーやレシピ情報の取得
-    @user = User.all
-    @all_recipe = Recipe.all
     # ユーザーが入力または送信した食材名を、HTTPリクエストのparamsから取得
     @ingredient_name = params[:ingredient_name]
     # @ingredient_nameと一致するingredient_nameを持つレコードを検索
     @ingredient = Ingredient.find_by(ingredient_name: @ingredient_name)
-        
+
     if @ingredient
       # N+1問題を解消するため、includesメソッドを使用
       @recipes = @ingredient.recipes.includes(:user, :recipe_image_attachment).page(params[:page]).per(8)
+    else
+      @recipes = Recipe.none.page(params[:page]).per(8)  # 空のページ化された Recipe コレクションを返す
     end
   end
 

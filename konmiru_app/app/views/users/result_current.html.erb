@@ -1,4 +1,5 @@
 <!-- CSSファイルの読み込み -->
+<link rel="stylesheet" href="/header/header.css">
 <link rel="stylesheet" href="/home/index.css">
 
 <!-- ヘッダー部分 -->
@@ -26,9 +27,9 @@
     <!-- プロフィール写真 -->
     <div class="profile-image">
       <% if @current_user.profile_image.attached? %>
-        <%= image_tag @current_user.profile_image, size: '50x50' %>
+        <%= image_tag @current_user.profile_image, size: '45x45' %>
       <% else %>
-      <%= image_tag "no_image.png", size: '50x50' %>
+      <%= image_tag "no_image.png", size: '45x45' %>
       <% end %>
     </div>
   </div>
@@ -51,9 +52,9 @@
   <!-- レシピ登録ページリンク -->
   <div><%= link_to "レシピを追加する", new_user_recipe_path(@current_user), class: "registration btn" %></div>
 
+  <p class="container-title"><%= params[:ingredient_name] %>を使ったレシピ</p>
   <!-- 検索結果のレシピ一覧 -->
   <div class="recipe-container">
-    <p class="container-title"><%= params[:ingredient_name] %>を<br>使ったレシピ</p>
     <!-- 検索結果の食材リストが並ぶ -->
     <% if @recipes.any? %>
       <% @recipes.each do |recipe| %>

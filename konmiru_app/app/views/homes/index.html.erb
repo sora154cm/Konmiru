@@ -1,4 +1,5 @@
 <!-- CSSファイルの読み込み -->
+<link rel="stylesheet" href="/header/header.css">
 <link rel="stylesheet" href="/home/index.css">
 
 <!-- ヘッダー部分 -->
@@ -27,9 +28,9 @@
     <!-- プロフィール写真 -->
     <div class="profile-image">
       <% if @current_user.profile_image.attached? %>
-        <%= image_tag @current_user.profile_image, size: '50x50' %>
+        <%= image_tag @current_user.profile_image, size: '45x45' %>
       <% else %>
-      <%= image_tag "no_image.png", size: '50x50' %>
+      <%= image_tag "no_image.png", size: '45x45' %>
       <% end %>
     </div>
   </div>
@@ -64,9 +65,9 @@
     <%= link_to "レシピを登録する", new_user_recipe_path(@current_user), data: { turbo: "false" }, class: "registration btn" %>
   </div>
 
+  <p class="container-title">あなたのレシピ</p>
   <div class="recipe-container">
     <!-- ユーザーのレシピ一覧 -->
-    <p class="container-title">あなたのレシピ</p>
     <!-- 食材リストが並ぶ -->
     <% @current_user_recipes.each do |recipe| %>
       <div class="recipes">
@@ -74,9 +75,9 @@
           <!-- 投稿したレシピ画像が存在すればそれを表示し、存在しなければデフォルトの画像を表示 -->
           <div class="recipe-image"> 
             <% if recipe.recipe_image.attached? %>
-              <%= image_tag url_for(recipe.recipe_image), size: '200x140', class: "image" %>
+              <%= image_tag url_for(recipe.recipe_image), size: '180x120', class: "image" %>
             <% else %>
-              <%= image_tag "no_image.png", size: '200x140', class: "image" %>
+              <%= image_tag "no_image.png", size: '180x120', class: "image" %>
             <% end %>
           </div>
           <div class="recipe-name"><%= recipe.recipe_name %></div>

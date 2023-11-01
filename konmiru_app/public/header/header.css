@@ -1,0 +1,113 @@
+body {
+  margin:0px;
+  background-color: rgb(243, 250, 245);
+  /* 基本の文字色 */
+  color:#444;
+}
+
+header {
+  width:100%;
+  height: 70px;
+  background-color: white;
+  border-bottom:1px solid rgb(9, 129, 9);
+  display: flex;          
+  align-items: center;
+}
+
+.header-actions {
+  height: 70px;
+  display: flex;  
+   /* 子要素間のスペースを均等にする */
+  justify-content: space-between; 
+  align-items:stretch;
+  width: 100%; 
+}
+
+.header-actions > * {
+  flex: 1; 
+  text-align: center; 
+  border-right: 1px solid #ddd; 
+  padding: 0 2px;  
+  display: flex;           
+  justify-content: center; 
+  align-items: center;     
+}
+
+.header-actions > *:last-child {
+  border-right: none;  
+}
+
+/* ロゴ~ */
+.header-log{
+  color:#fb914a;
+  font-weight: 600;
+}
+
+.fa-utensils {
+  font-size:1.4em;
+}
+
+.logo-text {
+  font-size:0.6em;
+}
+/* ～ロゴ */
+
+.header-link {
+  text-decoration: none;
+  display: flex;           
+  flex-direction: column;  
+  align-items: center;
+}
+
+.link-icon {
+  color:rgb(9, 129, 9);
+  font-size:1.2em;
+}
+
+.header-link-text {
+  color:rgb(9, 129, 9);
+  font-size:0.6em;
+  font-weight: 600;
+}
+
+/* リンク全体に触れると色が変わる */
+.header-link:hover,
+.header-link:hover .link-icon,
+.header-link:hover .header-link-text {
+  color:rgb(118, 216, 118);
+}
+
+.profile-image img {
+  /* 円形は50% */
+  border-radius: 50%; 
+}
+/* ～ヘッダー */
+
+/* タブレット以上のサイズに適用 */
+@media (min-width: 768px) {
+
+  body {
+    font-size: 18px;
+  }
+
+  header {
+    height: 100px;
+  }
+
+  .header-actions {
+    padding: 0 5%;
+  }
+
+  .fa-utensils,
+  .link-icon {
+    font-size: 1.6em;
+  }
+
+  .logo-text {
+    font-size: 0.9em;
+  }
+
+  .header-link-text {
+    font-size: 0.9em;
+  }
+}
