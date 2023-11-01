@@ -54,9 +54,9 @@ _(スマートフォンでの使用を推奨)_
 
 |        **ホームページ**        |         **検索結果**          |      **ユーザー一覧**       |
 |:---------------------------:|:--------------------------:|:---------------------------:|
-| <img src="public/README2/index.png" alt="ホームページ" width="200"> | <img src="public/README2/user_all.png" alt="検索結果" width="200"> | <img src="public/README2/profile_edit.png" alt="レシピ一覧" width="200"> |
+| <img src="public/README2/index.png" alt="ホームページ" width="200"> | <img src="public/README2/search_result.png" alt="検索結果" width="200"> | <img src="public/README2/user_all.png" alt="レシピ一覧" width="200"> |
 |        **レシピ登録**        |         **レシピ編集**         |         **レシピ詳細**         |
-| <img src="public/README2/recipe_new.png" alt="レシピ登録" width="200"> | <img src=lic/README2/recipe_edit.png" alt="レシピ編集" width="200"> | <img src="public/README2/recipe_show.png" alt="レシピ詳細" width="200"> |
+| <img src="public/README2/recipe_new.png" alt="レシピ登録" width="200"> | <img src="public/README2/recipe_edit.png" alt="レシピ編集" width="200"> | <img src="public/README2/recipe_show.png" alt="レシピ詳細" width="200"> |
 
 
 ## ER図
