@@ -1,5 +1,5 @@
 # こんみる
-<img src="public/README/app-image.png" alt="アプリ紹介" width="250">
+<img src="public/README2/konmiru.gif" alt="アプリ紹介" width="250">
 
 ## アプリ概要
 **献立アプリ「こんみる」**  
